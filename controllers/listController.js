@@ -10,10 +10,10 @@ exports.getMangaList = async (req, res) => {
 
     let listTitle;
     switch (type) {
-      case 'truyen-moi': listTitle = 'New Manga'; break;
-      case 'sap-ra-mat': listTitle = 'Coming Soon'; break;
-      case 'dang-phat-hanh': listTitle = 'Ongoing'; break;
-      case 'hoan-thanh': listTitle = 'Completed'; break;
+      case 'new-manga': listTitle = 'New Manga'; break;
+      case 'coming-soon': listTitle = 'Coming Soon'; break;
+      case 'on-going': listTitle = 'Ongoing'; break;
+      case 'completed': listTitle = 'Completed'; break;
       default: listTitle = 'Manga List';
     }
 

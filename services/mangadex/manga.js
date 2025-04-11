@@ -141,16 +141,16 @@ async function getMangaByStatus(status, page = 1, limit = 20) {
     };
 
     switch (status) {
-      case 'truyen-moi':
+      case 'new-manga':
         params.order = { createdAt: 'desc' };
         break;
-      case 'sap-ra-mat':
+      case 'coming-soon':
         params.status = ['announced'];
         break;
-      case 'dang-phat-hanh':
+      case 'on-going':
         params.status = ['ongoing'];
         break;
-      case 'hoan-thanh':
+      case 'completed':
         params.status = ['completed'];
         break;
       default:

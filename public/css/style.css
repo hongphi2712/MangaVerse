@@ -520,39 +520,85 @@ body  {
 }
 
 /* Auto-scroll container for Popular Now section */
-.auto-scroll-container {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  padding: 1rem 0;
+.scroll-container {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.scroll-container {
+  overflow-x: auto; /* Đảm bảo thanh cuộn vẫn hiện khi cần */
+  scrollbar-width: none; /* Ẩn thanh cuộn mặc định (tuỳ chọn) */
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none; /* Ẩn thanh cuộn trên Chrome/Safari */
+}
+.scroll-container:active {
+  cursor: grabbing;
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
 }
 
 .auto-scroll-wrapper {
   display: flex;
   width: max-content;
-  animation: scroll-left 60s linear infinite;
+  animation: scroll-left 90s linear infinite;
   position: relative;
+  gap: 20px;
+}
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { 
+    transform: translateX(calc(-260px * 15)); 
+  }
 }
 
 .auto-scroll-wrapper:hover {
   animation-play-state: paused;
 }
 
-@keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-180px * 10)); } /* Adjust based on card width and count */
+.card {
+  width: 240px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card h3 {
+  font-size: 16px;
+  margin-top: 8px;
+  color: #333;
 }
 
 .auto-scroll-wrapper .card.duplicate {
-  /* Styles for the duplicated cards for seamless looping */
   opacity: 1;
 }
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { 
+    transform: translateX(calc(-260px * 15)); 
+    /* 240px + 20px gap = 260px mỗi card, 15 card gồm 10 chính + 5 duplicate */
+  }
+}
+
 
 .scroll-container {
   display: flex;
   gap: 1rem;
   overflow-x: auto;
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
   padding: 1rem 0;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
@@ -589,6 +635,7 @@ body  {
   -ms-user-select: none;
   height: 100%;
   margin-right: 1rem;
+  scroll-snap-align: start;
 }
 
 .card a {
@@ -605,7 +652,7 @@ body  {
 
 .card img {
   width: 100%;
-  height: clamp(200px, 40vw, 250px);
+  height: clamp(280px, 45vw, 320px);
   object-fit: cover;
   transition: transform 0.3s ease;
 }
@@ -631,6 +678,7 @@ body  {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 
 .card:hover h3 {
   background: linear-gradient(to bottom, transparent, rgba(249, 78, 78, 0.8));

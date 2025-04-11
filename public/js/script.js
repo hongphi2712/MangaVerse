@@ -153,4 +153,52 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 });
-  
+
+//scroll
+document.addEventListener('DOMContentLoaded', () => {
+  const scrollContainer = document.querySelector('.scroll-container');
+  if (!scrollContainer) return;
+
+  let isDragging = false;
+  let startX, scrollLeft, timeoutId;
+
+  // Bắt đầu kéo
+  const startDrag = (e) => {
+    isDragging = true;
+    scrollContainer.style.scrollBehavior = 'auto'; // Tắt hiệu ứng mượt khi kéo
+    startX = (e.pageX || e.touches[0].pageX) - scrollContainer.offsetLeft;
+    scrollLeft = scrollContainer.scrollLeft;
+    scrollContainer.style.cursor = 'grabbing';
+  };
+
+  // Kéo di chuyển
+  const drag = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = (e.pageX || e.touches[0].pageX) - scrollContainer.offsetLeft;
+    const walk = (x - startX) * 1.5; // Tốc độ kéo
+    scrollContainer.scrollLeft = scrollLeft - walk;
+  };
+
+  // Kết thúc kéo
+  const endDrag = () => {
+    isDragging = false;
+    scrollContainer.style.scrollBehavior = 'smooth'; // Bật lại hiệu ứng mượt
+    scrollContainer.style.cursor = 'grab';
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      scrollContainer.style.overflowX = 'auto'; // Hiện thanh cuộn sau khi kéo xong
+    }, 500);
+  };
+
+  // Sự kiện chuột
+  scrollContainer.addEventListener('mousedown', startDrag);
+  scrollContainer.addEventListener('mousemove', drag);
+  scrollContainer.addEventListener('mouseup', endDrag);
+  scrollContainer.addEventListener('mouseleave', endDrag);
+
+  // Sự kiện cảm ứng
+  scrollContainer.addEventListener('touchstart', startDrag);
+  scrollContainer.addEventListener('touchmove', drag);
+  scrollContainer.addEventListener('touchend', endDrag);
+});

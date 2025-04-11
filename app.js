@@ -6,7 +6,7 @@ const routes = require('./routes');
 const cors = require('cors');
 
 const app = express();
-const PORT = config.port || 3008;
+const PORT = config.port;
 
 
 app.use(cors());

@@ -1,0 +1,18 @@
+<main>
+   <section class="section">
+    <h2 class="section-title">All Manga Categories</h2>
+    <% if (categories.length === 0) { %>
+      <p class="no-results">No categories found.</p>
+    <% } else { %>
+      <div class="categories-grid">
+        <% categories.forEach(category => { %>
+          <a href="/genres/<%= category.slug %>" class="category-card">
+            <h3><%= category.name %></h3>
+            <span class="manga-count"><%= category.totalComics || '0' %> manga</span>
+          </a>
+        <% }); %>
+      </div>
+    <% } %>
+  </section>
+</main>
+  

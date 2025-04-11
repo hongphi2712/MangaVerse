@@ -1,0 +1,62 @@
+<nav  class="navbar">
+  <div class="logo">
+    <a href="/">
+      <span class="logo-part-1">Manga</span><span class="logo-part-2">Verse</span>
+    </a>
+  </div>
+  <div class="search-container">
+    <form action="/search" method="GET">
+      <input type="text" id="searchBar" name="keyword" placeholder="Search manga...">
+      <span class="search-icon">🔍</span>
+    </form>
+  </div>
+  <div class="nav-buttons">
+    <a href="/" class="nav-btn" id="home-btn">Home</a>
+
+    <div class="genres-dropdown-container">
+      <button class="nav-btn" id="genres-btn">Genres</button>
+      <div class="genres-dropdown">
+        <div class="genres-column">
+          <a href="/genres/391b0423-d847-456f-aff0-8b0cfc03066b" data-genre="Action">Action</a>
+          <a href="/genres/87cc87cd-a395-47af-b27a-93258283ef6c" data-genre="Adventure">Adventure</a>
+          <a href="/genres/4d32cc48-9f00-4cca-9b5a-a839f0764984" data-genre="Comedy">Comedy</a>
+          <a href="/genres/5ca48985-9a9d-4bd8-be29-80dc0303db72" data-genre="Drama">Drama</a>
+          <a href="/genres/cdc58593-87dd-415e-bbc0-2ec27bf404cc" data-genre="Fantasy">Fantasy</a>
+          <a href="/genres/50880a9d-5440-4732-9afb-8f457127e836" data-genre="Horror">Horror</a>
+        </div>
+        <div class="genres-column">
+          <a href="/genres/ee968100-4191-4968-93d3-f82d72be7e46" data-genre="Mystery">Mystery</a>
+          <a href="/genres/423e2eae-a7a2-4a8b-ac03-a8351462d71d" data-genre="Romance">Romance</a>
+          <a href="/genres/b1e97889-25b4-4258-b28b-cd7f4d28ea9b" data-genre="Sci-Fi">Sci-Fi</a>
+          <a href="/genres/e5301a23-ebd9-49dd-a0cb-2add944c7fe9" data-genre="Slice of Life">Slice of Life</a>
+          <a href="/genres/69964a64-2f90-4d33-beeb-f3ed2875eb4c" data-genre="Sports">Sports</a>
+          <a href="/the-loai" data-genre="all">View All...</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="list-dropdown-container">
+      <button class="nav-btn" id="list-btn">Lists</button>
+      <div class="list-dropdown">
+        <a href="/lists/truyen-moi">New Manga</a>
+        <a href="/lists/dang-phat-hanh">Ongoing</a>
+        <a href="/lists/hoan-thanh">Completed</a>
+        <a href="/lists/sap-ra-mat">Coming Soon</a>
+      </div>
+    </div>
+
+    <a href="/random" class="nav-btn">Random</a>
+    <a href="https://mangadex.org" target="_blank" rel="noopener noreferrer" class="nav-btn" id="api-btn">MangaDex</a>
+
+    <div class="user-dropdown">
+      <button class="user-btn">
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User" class="user-icon">
+      </button>
+      <div class="dropdown-content">
+        <a href="#">Login</a>
+        <a href="#">Register</a>
+      </div>
+    </div>
+  </div>
+</nav>
+  

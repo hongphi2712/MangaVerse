@@ -1,0 +1,123 @@
+<section  class="welcome-section" style="background-image: url('<%= featuredImages[1] %>');">
+  <div class="welcome-overlay"></div>
+  <div class="welcome-content">
+    <h1>
+      <span class="welcome-part-1">Manga</span><span class="welcome-part-2">Verse</span>
+    </h1>
+    <p>A place for fellow manga enthusiasts.</p>
+  </div>
+</section>
+
+<main>
+  <section class="featured-grid">
+    <div class="featured-item" style="background-image: url('<%= featuredImages[0] %>');">
+      <div class="featured-overlay"></div>
+      <div class="featured-content">
+        <h3>Discover New Series</h3>
+        <a href="/lists/truyen-moi" class="featured-btn">Explore</a>
+      </div>
+    </div>
+    <div class="featured-item" style="background-image: url('<%= featuredImages[2] %>');">
+      <div class="featured-overlay"></div>
+      <div class="featured-content">
+        <h3>Find Your Favorite Genre</h3>
+        <a href="/the-loai" class="featured-btn">Browse Genres</a>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section">
+    <h2 class="section-title">Popular Now</h2>
+    <div class="auto-scroll-container">
+      <div class="auto-scroll-wrapper">
+        <% if (popular && popular.length > 0) { %>
+          <% popular.forEach(item => { %>
+            <div class="card">
+              <a href="/manga/<%= item.slug %>">
+                <img src="<%= item.thumbnail || '/images/no-image.jpg' %>" alt="<%= item.title || 'Manga' %>">
+                <h3><%= item.title || 'Untitled Manga' %></h3>
+              </a>
+            </div>
+          <% }); %>
+          <% // Duplicate first few items for seamless looping %>
+          <% popular.slice(0, 5).forEach(item => { %>
+            <div class="card duplicate">
+              <a href="/manga/<%= item.slug %>">
+                <img src="<%= item.thumbnail || '/images/no-image.jpg' %>" alt="<%= item.title || 'Manga' %>">
+                <h3><%= item.title || 'Untitled Manga' %></h3>
+              </a>
+            </div>
+          <% }); %>
+        <% } else { %>
+          <p class="no-results">No popular manga available at the moment. Please check again later.</p>
+        <% } %>
+      </div>
+    </div>
+    <div class="view-all-btn-container">
+      <a href="/lists/dang-phat-hanh" class="view-all-btn">View All</a>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section class="section">
+    <h2 class="section-title">Latest Updates</h2>
+    <div class="scroll-container">
+      <% if (recent && recent.length > 0) { %>
+        <% recent.forEach(item => { %>
+          <div class="card">
+            <a href="/manga/<%= item.slug %>">
+              <img src="<%= item.thumbnail || '/images/no-image.jpg' %>" alt="<%= item.title || 'Manga' %>">
+              <h3><%= item.title || 'Untitled Manga' %></h3>
+            </a>
+          </div>
+        <% }); %>
+      <% } else { %>
+        <p class="no-results">No recent manga available at the moment. Please check again later.</p>
+      <% } %>
+    </div>
+    <div class="view-all-btn-container">
+      <a href="/lists/truyen-moi" class="view-all-btn">View All</a>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+  
+  <div class="discover-section">
+    <div class="discover-content">
+      <h2>Discover Something New</h2>
+      <p>Not sure what to read next? Let us surprise you with a random manga recommendation.</p>
+      <a href="/random" class="discover-btn">Random Manga</a>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <section class="section">
+    <h2 class="section-title">Top Rated Manga</h2>
+    <% if (topRated && topRated.length > 0) { %>
+      <ul class="ranking-list">
+        <% topRated.slice(0, 10).forEach((item, index) => { %>
+          <li>
+            <a href="/manga/<%= item.slug %>" class="ranking-item">
+              <div class="ranking-left">
+                <span class="ranking-number"><%= index + 1 %></span>
+                <img src="<%= item.thumbnail || '/images/no-image.jpg' %>" alt="<%= item.title %>" class="ranking-image">
+                <span class="ranking-title"><%= item.title || 'Untitled Manga' %></span>
+              </div>
+              <div class="ranking-right">
+                <span class="ranking-score"><%= item.rate || 'N/A' %> ★</span>
+              </div>
+            </a>
+          </li>
+        <% }); %>
+      </ul>
+      <div class="view-all-btn-container">
+        <a href="/lists/hoan-thanh" class="view-all-btn">View All</a>
+      </div>
+    <% } else { %>
+      <p class="no-results">No ranking data available at the moment. Please check again later.</p>
+    <% } %>
+  </section>
+</main>
+  

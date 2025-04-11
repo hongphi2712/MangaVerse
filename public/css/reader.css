@@ -1,0 +1,276 @@
+.reader-body  {
+  overflow-x: hidden;
+  background-color: #0a0a0a;
+}
+
+.reader-navbar {
+  background-color: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.reader-navbar .logo {
+  font-size: 1.2rem;
+}
+
+.reader-breadcrumb {
+  flex: 1;
+  margin-left: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.reader-breadcrumb a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.reader-breadcrumb a:hover {
+  color: #f94e4e;
+}
+
+.reader-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.reader-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reader-btn:hover {
+  background: rgba(249, 78, 78, 0.3);
+}
+
+.reader-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.reader-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.chapter-title {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  color: #f94e4e;
+}
+
+.manga-pages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.manga-page {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.manga-page:hover {
+  transform: scale(1.02);
+}
+
+.manga-page img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.page-loading {
+  background-color: #222;
+  height: 800px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-bottom-color: #f94e4e;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.error-message {
+  color: #f94e4e;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.chapter-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0;
+  position: sticky;
+  bottom: 1rem;
+  background: rgba(26, 26, 26, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  border-radius: 50px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.nav-btn {
+  background-color: rgba(249, 78, 78, 0.8);
+  border: none;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.nav-btn:hover {
+  background-color: rgba(249, 78, 78, 1);
+  transform: translateY(-2px);
+}
+
+.nav-btn:disabled, .nav-btn.disabled {
+  background-color: rgba(100, 100, 100, 0.5);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-btn.prev::before {
+  content: "←";
+}
+
+.nav-btn.next::after {
+  content: "→";
+}
+
+.back-to-info {
+  display: block;
+  text-align: center;
+  margin: 2rem auto;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  width: fit-content;
+  transition: all 0.3s ease;
+}
+
+.back-to-info:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.reading-mode-switch {
+  display: flex;
+  justify-content: center;
+  margin: 1rem auto;
+  gap: 0.5rem;
+}
+
+.mode-btn {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mode-btn.active {
+  background-color: #f94e4e;
+}
+
+.single-page-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+#pageCounter {
+  color: white;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .reader-navbar {
+    flex-wrap: wrap;
+  }
+
+  .reader-breadcrumb {
+    order: 3;
+    width: 100%;
+    margin: 0.5rem 0 0;
+    text-align: center;
+  }
+
+  .reader-container {
+    padding: 0.5rem;
+  }
+
+  .chapter-navigation {
+    max-width: 100%;
+    border-radius: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0.8rem;
+  }
+
+  .nav-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .page-loading {
+    height: 500px;
+  }
+}
+  

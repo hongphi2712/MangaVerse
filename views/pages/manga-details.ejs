@@ -1,0 +1,136 @@
+<main  class="manga-details">
+  <div class="manga-hero">
+    <div class="manga-poster">
+      <img src="<%= manga.thumbnail || '/images/no-image.jpg' %>" alt="<%= manga.title %>">
+      <% if (manga.rate) { %>
+        <div class="manga-score">
+          <span><%= manga.rate %></span>
+          <span class="score-star">★</span>
+        </div>
+      <% } %>
+    </div>
+    <div class="manga-info">
+      <h1><%= manga.title %></h1>
+      <% if (manga.otherName) { %>
+        <h2 class="japanese-title"><%= manga.otherName %></h2>
+      <% } %>
+      
+      <div class="manga-stats">
+        <div class="stat">
+          <span class="stat-label">Status:</span>
+          <span class="stat-value"><%= manga.status || 'Unknown' %></span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Type:</span>
+          <span class="stat-value"><%= manga.type || 'Manga' %></span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Rating:</span>
+          <span class="stat-value"><%= manga.rate || 'Unknown' %></span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Updated:</span>
+          <span class="stat-value"><%= manga.updatedAt || 'Unknown' %></span>
+        </div>
+      </div>
+      
+      <div class="manga-categories">
+        <h3>Genres</h3>
+        <div class="categories-list">
+          <% if (manga.categories && manga.categories.length > 0) { %>
+            <% manga.categories.forEach(genre => { %>
+              <a href="/genres/<%= genre.slug %>" class="category-tag"><%= genre.name %></a>
+            <% }); %>
+          <% } else { %>
+            <span>No genres available</span>
+          <% } %>
+        </div>
+      </div>
+      
+      <div class="manga-description">
+        <h3>Synopsis</h3>
+        <p><%= manga.description || 'No description available.' %></p>
+      </div>
+      
+      <% if (manga.authors && manga.authors.length > 0) { %>
+      <div class="manga-authors">
+        <h3>Authors</h3>
+        <div class="authors-list">
+          <% manga.authors.forEach(author => { %>
+            <span class="author"><%= author %></span>
+          <% }); %>
+        </div>
+      </div>
+      <% } %>
+      
+      <% if (manga.source) { %>
+      <div class="manga-serializations">
+        <h3>Source</h3>
+        <div class="serializations-list">
+          <span class="serialization"><%= manga.source %></span>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+  
+  <% if (chapters && chapters.length > 0) { %>
+  <section class="section manga-chapters-section">
+    <h2 class="section-title">Chapters</h2>
+    <div class="manga-chapters">
+      <div class="chapter-list">
+        <% 
+          // Sort chapters numerically from newest to oldest
+          const sortedChapters = [...chapters].sort((a, b) => {
+            const aNum = parseFloat(a.chapter) || 0;
+            const bNum = parseFloat(b.chapter) || 0;
+            return bNum - aNum;
+          });
+          
+          // Keep track of chapters we've already displayed to avoid duplicates
+          const displayedChapters = new Set();
+        %>
+        
+        <% sortedChapters.forEach(chapter => { 
+          // Check if we've already displayed this chapter number
+          const chapterNum = parseFloat(chapter.chapter) || 0;
+          const chapterKey = chapterNum.toString();
+          
+          if (!displayedChapters.has(chapterKey)) {
+            displayedChapters.add(chapterKey);
+        %>
+          <div class="chapter-item">
+            <a href="/manga/<%= manga.slug %>/<%= chapter.slug %>" class="chapter-link">
+              <span class="chapter-name">
+                <% if (chapter.name && chapter.name !== `Chapter ${chapter.chapter}`) { %>
+                  Chapter <%= chapter.chapter %>: <%= chapter.name %>
+                <% } else { %>
+                  Chapter <%= chapter.chapter %>
+                <% } %>
+              </span>
+              <span class="chapter-updated"><%= chapter.updatedAt %></span>
+            </a>
+          </div>
+        <% } }) %>
+      </div>
+    </div>
+  </section>
+  <% } %>
+  
+  <% if (related && related.length > 0) { %>
+  <section class="section recommendations-section">
+    <h2 class="section-title">You May Also Like</h2>
+    <div class="scroll-container">
+      <% related.forEach(item => { %>
+        <div class="card">
+          <a href="/manga/<%= item.slug %>">
+            <img src="<%= item.thumbnail || '/images/no-image.jpg' %>" alt="<%= item.title %>">
+            <h3><%= item.title %></h3>
+          </a>
+        </div>
+      <% }); %>
+    </div>
+  </section>
+  <% } %>
+</main>
+  

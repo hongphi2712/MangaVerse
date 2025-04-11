@@ -1,0 +1,44 @@
+<main>
+   <section class="section">
+    <% 
+      let headerTitle;
+      switch(type) {
+        case 'truyen-moi': headerTitle = 'New Manga'; break;
+        case 'sap-ra-mat': headerTitle = 'Coming Soon'; break;
+        case 'dang-phat-hanh': headerTitle = 'Ongoing Manga'; break;
+        case 'hoan-thanh': headerTitle = 'Completed Manga'; break;
+        default: headerTitle = 'Manga List';
+      }
+    %>
+    <h2 class="section-title"><%= headerTitle %></h2>
+    <% if (mangas.length === 0) { %>
+      <p class="no-results">No mangas found in this category.</p>
+    <% } else { %>
+      <div class="search-results-grid">
+        <% mangas.forEach(item => { %>
+          <div class="card">
+            <a href="/manga/<%= item.slug %>">
+              <img src="<%= item.thumbnail || '/images/no-image.jpg' %>" alt="<%= item.title %>">
+              <h3><%= item.title %></h3>
+            </a>
+          </div>
+        <% }); %>
+      </div>
+      
+      <div class="pagination">
+        <% if (currentPage > 1) { %>
+          <a href="/lists/<%= type %>?page=<%= parseInt(currentPage) - 1 %>" class="pagination-link prev">Previous</a>
+        <% } %>
+        
+        <% for(let i = Math.max(1, currentPage - 2); i <= Math.min(parseInt(totalPages), parseInt(currentPage) + 2); i++) { %>
+          <a href="/lists/<%= type %>?page=<%= i %>" class="pagination-link <%= i == currentPage ? 'active' : '' %>"><%= i %></a>
+        <% } %>
+        
+        <% if (currentPage < totalPages) { %>
+          <a href="/lists/<%= type %>?page=<%= parseInt(currentPage) + 1 %>" class="pagination-link next">Next</a>
+        <% } %>
+      </div>
+    <% } %>
+  </section>
+</main>
+  

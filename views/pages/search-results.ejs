@@ -1,0 +1,20 @@
+<main>
+   <section class="section">
+    <h2 class="section-title">Search Results for "<%= query %>"</h2>
+    <% if (results.length === 0) { %>
+      <p class="no-results">No results found. Try a different search term.</p>
+    <% } else { %>
+      <div class="search-results-grid">
+        <% results.forEach(item => { %>
+          <div class="card">
+            <a href="/manga/<%= item.slug %>">
+              <img src="<%= item.thumbnail || '/images/no-image.jpg' %>" alt="<%= item.title %>">
+              <h3><%= item.title %></h3>
+            </a>
+          </div>
+        <% }); %>
+      </div>
+    <% } %>
+  </section>
+</main>
+  

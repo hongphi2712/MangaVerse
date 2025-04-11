@@ -1,0 +1,65 @@
+<div  class="reader-container">
+  <h1 class="chapter-title"><%= chapter.title %></h1>
+  
+  <div class="reading-mode-switch">
+    <button class="mode-btn active" data-mode="vertical">Vertical</button>
+    <button class="mode-btn" data-mode="single">Single Page</button>
+  </div>
+  
+  <div class="manga-pages" id="verticalReader">
+    <% if (pages && pages.length > 0) { %>
+      <% pages.forEach((page, index) => { %>
+        <div class="manga-page" data-index="<%= index + 1 %>">
+          <div class="page-loading" id="loading-<%= index + 1 %>">
+            <span class="loader"></span>
+          </div>
+          <img src="<%= baseUrl + page %>" alt="Page <%= index + 1 %>" loading="lazy"
+               onload="document.getElementById('loading-<%= index + 1 %>').style.display = 'none'"
+               onerror="handleImageError(this, <%= index + 1 %>)">
+        </div>
+      <% }); %>
+    <% } else { %>
+      <div class="error-message">
+        <p>Unable to load chapter pages. The chapter may be unavailable or requires authentication.</p>
+      </div>
+    <% } %>
+  </div>
+  
+  <div id="singlePageReader" style="display: none;">
+    <div class="manga-page" id="currentPage">
+      <div class="page-loading" id="single-loading">
+        <span class="loader"></span>
+      </div>
+      <img id="singlePageImage" src="" alt="Current Page" 
+           onload="document.getElementById('single-loading').style.display = 'none'"
+           onerror="handleSingleImageError()">
+    </div>
+    
+    <div class="chapter-navigation single-page-nav">
+      <button class="nav-btn prev" id="prevPage" onclick="goToPreviousPage()">Prev</button>
+      <span id="pageCounter">Page 1 / <%= pages.length %></span>
+      <button class="nav-btn next" id="nextPage" onclick="goToNextPage()">Next</button>
+    </div>
+  </div>
+  
+  <div class="chapter-navigation">
+    <% if (prevChapter) { %>
+      <a href="/manga/<%= manga.slug %>/<%= prevChapter.id %>" class="nav-btn prev">
+        Chapter <%= prevChapter.number %>
+      </a>
+    <% } else { %>
+      <button disabled class="nav-btn prev disabled">First Chapter</button>
+    <% } %>
+    
+    <% if (nextChapter) { %>
+      <a href="/manga/<%= manga.slug %>/<%= nextChapter.id %>" class="nav-btn next">
+        Chapter <%= nextChapter.number %>
+      </a>
+    <% } else { %>
+      <button disabled class="nav-btn next disabled">Last Chapter</button>
+    <% } %>
+  </div>
+  
+  <a href="/manga/<%= manga.slug %>" class="back-to-info">Back to Series Info</a>
+</div>
+  

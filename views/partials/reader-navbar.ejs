@@ -1,0 +1,18 @@
+<nav  class="reader-navbar">
+  <div class="logo">
+    <a href="/">
+      <span class="logo-part-1">Manga</span><span class="logo-part-2">Verse</span>
+    </a>
+  </div>
+  
+  <div class="reader-breadcrumb">
+    <a href="/">Home</a> &gt; 
+    <a href="/manga/<%= manga.slug %>"><%= manga.title %></a> &gt; 
+    <%= chapter.title %>
+  </div>
+  
+  <div class="reader-controls">
+    <a href="/manga/<%= manga.slug %>" class="reader-btn">Info</a>
+  </div>
+</nav>
+  

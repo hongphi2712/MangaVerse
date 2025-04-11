@@ -1,0 +1,60 @@
+<!DOCTYPE  html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Built with jdoodle.ai - Browse <%= genreName %> manga and anime at MangaVerse">
+  <meta property="og:title" content="<%= genreName %> Manga - MangaVerse">
+  <meta property="og:description" content="Built with jdoodle.ai - Explore <%= genreName %> manga and anime">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1602416222941-a72a356dab04?ixid=M3w3MjUzNDh8MHwxfHNlYXJjaHwxfHxtYW5nYSUyMGNvdmVycyUyMGFuaW1lfGVufDB8fHx8MTc0NDMwNjA4NXww&ixlib=rb-4.0.3&fit=fillmax&h=800&w=1200">
+  <title><%= genreName %> | MangaVerse</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans&family=Righteous&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+  
+  <main>
+    <section class="section">
+      <h2 class="section-title"><%= genreName %> Manga</h2>
+      <% if (results.length === 0) { %>
+        <p class="no-results">No results found for this genre.</p>
+      <% } else { %>
+        <div class="search-results-grid">
+          <% results.forEach(item => { %>
+            <div class="card">
+              <a href="/truyen-tranh/<%= item.slug %>">
+                <img src="<%= item.thumbnail || '/images/no-image.jpg' %>" alt="<%= item.title %>">
+                <h3><%= item.title %></h3>
+              </a>
+            </div>
+          <% }); %>
+        </div>
+        
+        <div class="pagination">
+          <% if (currentPage > 1) { %>
+            <a href="/the-loai/<%= genreSlug %>?page=<%= parseInt(currentPage) - 1 %>" class="pagination-link prev">Previous</a>
+          <% } %>
+          
+          <% for(let i = Math.max(1, currentPage - 2); i <= Math.min(parseInt(totalPages), parseInt(currentPage) + 2); i++) { %>
+            <a href="/the-loai/<%= genreSlug %>?page=<%= i %>" class="pagination-link <%= i == currentPage ? 'active' : '' %>"><%= i %></a>
+          <% } %>
+          
+          <% if (currentPage < totalPages) { %>
+            <a href="/the-loai/<%= genreSlug %>?page=<%= parseInt(currentPage) + 1 %>" class="pagination-link next">Next</a>
+          <% } %>
+        </div>
+      <% } %>
+    </section>
+  </main>
+  
+  <%- include('partials/footer') %>
+  
+  <script src="/js/script.js"></script>
+</body>
+</html>
+ 

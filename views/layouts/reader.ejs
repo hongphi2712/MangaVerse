@@ -1,0 +1,28 @@
+<!DOCTYPE  html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Built with jdoodle.ai - <%= metaDescription || 'Read manga online for free' %>">
+  <meta property="og:title" content="<%= title || 'MangaVerse Reader' %>">
+  <meta property="og:description" content="Built with jdoodle.ai - <%= metaDescription || 'Read manga online for free' %>">
+  <meta property="og:image" content="<%= metaImage || 'https://images.unsplash.com/photo-1602416222941-a72a356dab04?ixid=M3w3MjUzNDh8MHwxfHNlYXJjaHwxfHxtYW5nYSUyMGNvdmVycyUyMGFuaW1lfGVufDB8fHx8MTc0NDM1ODc5OXww&ixlib=rb-4.0.3&fit=fillmax&h=800&w=1200' %>">
+  <title><%= title || 'MangaVerse Reader' %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/reader.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans&family=Righteous&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body class="reader-body">
+  <%- include('../partials/reader-navbar') %>
+  
+  <%- body %>
+  
+  <script src="/js/script.js"></script>
+  <script src="/js/reader.js"></script>
+</body>
+</html>
+  

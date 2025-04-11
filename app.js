@@ -3,9 +3,13 @@ const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
 const config = require('./config');
 const routes = require('./routes');
+const cors = require('cors');
 
 const app = express();
 const PORT = config.port || 3008;
+
+
+app.use(cors());
 
 // Set up EJS and layouts
 app.set('view engine', 'ejs');

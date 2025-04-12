@@ -15,5 +15,6 @@ router.get('/genres', genreController.getGenres);
 router.get('/genres/:slug', genreController.getMangaByGenre);
 router.get('/lists/:type', listController.getMangaList);
 router.get('/random', randomController.getRandomManga);
+router.use('/', require('./proxy'));
 
 module.exports = router;

@@ -24,9 +24,9 @@ exports.getHome = async (req, res) => {
     ];
 
     const [popular, recent, topRated] = await Promise.all([
-      mangadexService.getPopularManga(12),
-      mangadexService.getRecentManga(10),
-      mangadexService.getTopRatedManga(6)
+      mangadexService.getPopularManga(30),
+      mangadexService.getRecentManga(24),
+      mangadexService.getTopRatedManga(20)
     ]);
 
     const data = {

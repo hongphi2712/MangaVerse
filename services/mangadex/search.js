@@ -1,7 +1,7 @@
 const api = require('./api');
 const { formatManga } = require('./formatters');
 
-async function searchManga(query, limit = 20) {
+async function searchManga(query, limit = 90) {
   try {
     const response = await api.get('/manga', {
       params: {

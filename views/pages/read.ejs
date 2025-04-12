@@ -1,7 +1,7 @@
 <div  class="reader-container">
   <h1 class="chapter-title"><%= chapter.title %></h1>
   
-  <div class="reading-mode-switch">
+  <div class="reader-mode-switch">
     <button class="mode-btn active" data-mode="vertical">Vertical</button>
     <button class="mode-btn" data-mode="single">Single Page</button>
   </div>
@@ -37,7 +37,7 @@
     
     <div class="chapter-navigation single-page-nav">
       <button class="nav-btn prev" id="prevPage" onclick="goToPreviousPage()">Prev</button>
-      <span id="pageCounter">Page 1 / <%= pages.length %></span>
+      <span id="pageCounter">Page 1 / ${totalPages}</span>
       <button class="nav-btn next" id="nextPage" onclick="goToNextPage()">Next</button>
     </div>
   </div>

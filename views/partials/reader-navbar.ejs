@@ -1,4 +1,73 @@
-<nav  class="reader-navbar">
+<style>
+  .reader-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(12px);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  .logo a {
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+
+  .logo-part-1 {
+    color: #fff;
+  }
+
+  .logo-part-2 {
+    color: #ff4d4d;
+  }
+
+  .reader-breadcrumb {
+    flex: 1;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #ccc;
+  }
+
+  .reader-breadcrumb a {
+    color: #f94e4e;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .reader-breadcrumb a:hover {
+    color: #ff8888;
+  }
+
+  .reader-controls {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .reader-btn {
+    background-color: #f94e4e;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: background 0.3s ease;
+  }
+
+  .reader-btn:hover {
+    background-color: #ff6b6b;
+  }
+</style>
+
+<nav class="reader-navbar">
   <div class="logo">
     <a href="/">
       <span class="logo-part-1">Manga</span><span class="logo-part-2">Verse</span>
@@ -15,4 +84,3 @@
     <a href="/manga/<%= manga.slug %>" class="reader-btn">Info</a>
   </div>
 </nav>
-  

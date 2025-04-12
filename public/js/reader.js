@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded',  function() {
+document.addEventListener('DOMContentLoaded', function() {
   // Get elements
   const pages = document.querySelectorAll('.manga-page img');
   const pagesList = Array.from(pages).map(img => img.src);
@@ -14,7 +14,10 @@ document.addEventListener('DOMContentLoaded',  function() {
   
   // Initialize reader
   function initReader() {
-    if (pages.length === 0) return;
+    if (pages.length === 0) {
+      console.error('No pages found');
+      return;
+    }
     
     // Set up reading mode switch
     modeButtons.forEach(button => {
@@ -33,11 +36,8 @@ document.addEventListener('DOMContentLoaded',  function() {
           verticalReader.style.display = 'none';
           singlePageReader.style.display = 'block';
           
-          // Initialize single page viewer if it's the first time
-          if (!singlePageReader.initialized) {
-            updateSinglePage();
-            singlePageReader.initialized = true;
-          }
+          // Initialize single page viewer
+          updateSinglePage();
         }
       });
     });
@@ -46,8 +46,10 @@ document.addEventListener('DOMContentLoaded',  function() {
     document.addEventListener('keydown', function(e) {
       if (singlePageReader.style.display === 'block') {
         if (e.key === 'ArrowRight' || e.key === ' ') {
+          e.preventDefault();
           goToNextPage();
         } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
           goToPreviousPage();
         }
       }
@@ -56,10 +58,13 @@ document.addEventListener('DOMContentLoaded',  function() {
   
   // Update single page view
   window.updateSinglePage = function() {
+    if (totalPages === 0) return;
+    
     const pageCounter = document.getElementById('pageCounter');
     const prevButton = document.getElementById('prevPage');
     const nextButton = document.getElementById('nextPage');
     const singlePageImage = document.getElementById('singlePageImage');
+    const loadingElement = document.getElementById('single-loading');
     
     // Update page counter
     pageCounter.textContent = `Page ${currentPageIndex + 1} / ${totalPages}`;
@@ -68,8 +73,18 @@ document.addEventListener('DOMContentLoaded',  function() {
     prevButton.disabled = currentPageIndex === 0;
     nextButton.disabled = currentPageIndex === totalPages - 1;
     
+    // Show loading and hide current image
+    loadingElement.style.display = 'flex';
+    singlePageImage.style.display = 'none';
+    
     // Update image
-    document.getElementById('single-loading').style.display = 'flex';
+    singlePageImage.onload = function() {
+      loadingElement.style.display = 'none';
+      singlePageImage.style.display = 'block';
+    };
+    singlePageImage.onerror = function() {
+      handleSingleImageError();
+    };
     singlePageImage.src = pagesList[currentPageIndex];
   };
   
@@ -89,34 +104,13 @@ document.addEventListener('DOMContentLoaded',  function() {
     }
   };
   
-  // Handle image error
-  window.handleImageError = function(img, pageNumber) {
-    img.parentNode.innerHTML = `
-      <div class="error-message">
-        <p>Failed to load page ${pageNumber}</p>
-        <button onclick="retryLoadImage(this, '${img.src}', ${pageNumber})">Retry</button>
-      </div>
-    `;
-  };
-  
-  // Retry loading an image
-  window.retryLoadImage = function(button, src, pageNumber) {
-    const parent = button.parentNode.parentNode;
-    parent.innerHTML = `
-      <div class="page-loading" id="loading-retry-${pageNumber}">
-        <span class="loader"></span>
-      </div>
-      <img src="${src}" alt="Page ${pageNumber}" loading="lazy"
-           onload="document.getElementById('loading-retry-${pageNumber}').style.display = 'none'"
-           onerror="handleImageError(this, ${pageNumber})">
-    `;
-  };
-  
   // Handle error in single page mode
   window.handleSingleImageError = function() {
     const singlePageImage = document.getElementById('singlePageImage');
+    const loadingElement = document.getElementById('single-loading');
+    
     singlePageImage.style.display = 'none';
-    document.getElementById('single-loading').innerHTML = `
+    loadingElement.innerHTML = `
       <div class="error-message">
         <p>Failed to load page ${currentPageIndex + 1}</p>
         <button onclick="retrySinglePage()">Retry</button>
@@ -126,13 +120,12 @@ document.addEventListener('DOMContentLoaded',  function() {
   
   // Retry loading in single page mode
   window.retrySinglePage = function() {
-    const singlePageImage = document.getElementById('singlePageImage');
-    singlePageImage.style.display = 'block';
-    document.getElementById('single-loading').innerHTML = '<span class="loader"></span>';
+    const loadingElement = document.getElementById('single-loading');
+    loadingElement.innerHTML = '<span class="loader"></span>';
+    loadingElement.style.display = 'flex';
     updateSinglePage();
   };
   
   // Initialize the reader
   initReader();
 });
-  

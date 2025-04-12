@@ -14,6 +14,9 @@ exports.getMangaList = async (req, res) => {
       case 'coming-soon': listTitle = 'Coming Soon'; break;
       case 'on-going': listTitle = 'Ongoing'; break;
       case 'completed': listTitle = 'Completed'; break;
+      case 'popular': listTitle = 'Popular'; break;
+      case 'top-rated': listTitle = 'Top Rated'; break;
+      case 'recent': listTitle = 'Latest Updated'; break; // corrected spelling
       default: listTitle = 'Manga List';
     }
 

@@ -131,7 +131,7 @@ async function getRandomManga() {
   }
 }
 
-async function getMangaByStatus(status, page = 1, limit = 20) {
+async function getMangaByStatus(status, page = 1, limit = 44) {
   try {
     const offset = (page - 1) * limit;
     let params = {
@@ -149,6 +149,15 @@ async function getMangaByStatus(status, page = 1, limit = 20) {
         break;
       case 'on-going':
         params.status = ['ongoing'];
+        break;
+      case 'popular':
+        params.order = { followedCount: 'desc' };
+        break;
+      case 'top-rated':
+        params.order = { rating: 'desc' };
+        break;
+      case 'recent':
+        params.order = { updatedAt: 'desc' };
         break;
       case 'completed':
         params.status = ['completed'];
@@ -170,6 +179,7 @@ async function getMangaByStatus(status, page = 1, limit = 20) {
     return { mangas: [], total: 0, limit, offset };
   }
 }
+
 
 module.exports = {
   getLatestManga,

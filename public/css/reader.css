@@ -207,27 +207,64 @@
   transform: translateY(-2px);
 }
 
-.reading-mode-switch {
+.reader-mode-switch {
   display: flex;
   justify-content: center;
-  margin: 1rem auto;
-  gap: 0.5rem;
+  gap: 12px; /* Tăng khoảng cách giữa các nút */
+  margin: 20px auto; /* Căn giữa và tăng margin trên dưới */
+  padding: 12px 16px; /* Tăng padding */
+  background: rgba(0, 0, 0, 0.08); /* Màu nền tối hơn một chút */
+  border-radius: 10px; /* Bo tròn nhiều hơn */
+  max-width: 300px; /* Giới hạn chiều rộng */
 }
 
 .mode-btn {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: none;
-  color: #fff;
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Tăng khoảng cách giữa icon và text */
+  padding: 12px 24px; /* Tăng padding nút */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Thêm viền nhẹ */
+  border-radius: 8px; /* Bo tròn nút */
+  background: #fff; /* Nền trắng */
+  color: #444; /* Màu chữ tối hơn */
+  font-size: 15px; /* Tăng kích thước chữ */
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease-in-out; /* Thay đổi transition */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12); /* Bóng đổ tinh tế hơn */
+}
+
+.mode-btn:hover {
+  background: #f8f8f8; /* Màu nền khi hover nhẹ hơn */
+  transform: translateY(-1px); /* Hiệu ứng nhấc lên nhẹ */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.16); /* Bóng đổ đậm hơn khi hover */
 }
 
 .mode-btn.active {
-  background-color: #f94e4e;
+  background-color: #f94e4e; /* Giữ màu đỏ active */
+  color: white;
+  border-color: #f94e4e; /* Viền cùng màu active */
+  box-shadow: 0 3px 6px rgba(249, 78, 78, 0.3); /* Bóng đổ cho nút active */
 }
 
+.mode-btn.active:hover {
+  background-color: #e63a3a; /* Màu đỏ đậm hơn khi hover trên active */
+  box-shadow: 0 5px 10px rgba(249, 78, 78, 0.4);
+  transform: translateY(-1px); /* Vẫn giữ hiệu ứng nhấc lên */
+}
+
+.mode-btn .fa,
+.mode-btn .svg-inline--fa,
+.mode-btn .mode-icon {
+  font-size: 18px; /* Tăng kích thước icon Font Awesome */
+  margin-right: 8px;
+}
+
+.mode-btn .mode-icon {
+  width: 1.2em; /* Điều chỉnh kích thước icon SVG */
+  height: 1.2em;
+  vertical-align: middle;
+}
 .single-page-nav {
   display: flex;
   align-items: center;

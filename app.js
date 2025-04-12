@@ -1,13 +1,15 @@
 const express = require('express');
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
-const config = require('./config');
 const routes = require('./routes');
 const cors = require('cors');
 
-const app = express();
-const PORT = config.port || 3008;
+const dotenv = require('dotenv');
 
+const app = express();
+const PORT = process.env.PORT || 3008;
+
+dotenv.config();
 
 app.use(cors());
 
@@ -23,7 +25,7 @@ app.use('/', routes);
 
 // 404 page
 app.use((req, res) => {
-  res.status(404).render('pages/error', {
+  res.status(404).render('pages/error', { 
     message: 'Page not found',
     title: 'Page Not Found | MangaVerse',
     metaDescription: 'The page you are looking for does not exist'

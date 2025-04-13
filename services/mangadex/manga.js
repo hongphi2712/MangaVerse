@@ -25,7 +25,7 @@ async function getLatestManga(page = 1, limit = 100) {
   }
 }
 
-async function getPopularManga(limit = 12) {
+async function getPopularManga(limit = 10) {
   try {
     const response = await api.get('/manga', {
       params: {
@@ -42,19 +42,19 @@ async function getPopularManga(limit = 12) {
   }
 }
 
-async function getRecentManga(limit = 10) {
+async function getLatestUpdates(limit = 10) {
   try {
     const response = await api.get('/manga', {
       params: {
         limit,
         includes: ['cover_art'],
-        order: { updatedAt: 'desc' },
+        order: { latestUploadedChapter: 'desc' },
       },
     });
 
     return response.data.data.map(formatManga);
   } catch (error) {
-    console.error('Error fetching recent manga:', error);
+    console.error('Error fetching latest updates manga:', error);
     return [];
   }
 }
@@ -156,8 +156,8 @@ async function getMangaByStatus(status, page = 1, limit = 44) {
       case 'top-rated':
         params.order = { rating: 'desc' };
         break;
-      case 'recent':
-        params.order = { updatedAt: 'desc' };
+      case 'latest-updates':
+        params.order = { latestUploadedChapter: 'desc' };
         break;
       case 'completed':
         params.status = ['completed'];
@@ -184,7 +184,7 @@ async function getMangaByStatus(status, page = 1, limit = 44) {
 module.exports = {
   getLatestManga,
   getPopularManga,
-  getRecentManga,
+  getLatestUpdates,
   getTopRatedManga,
   getMangaById,
   getRelatedManga,

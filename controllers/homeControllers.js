@@ -23,15 +23,15 @@ exports.getHome = async (req, res) => {
       'https://images.unsplash.com/photo-1578632767115-351597cf2477?ixid=M3w3MjUzNDh8MHwxfHNlYXJjaHw0fHxtYW5nYSUyMGNvdmVycyUyMGFuaW1lfGVufDB8fHx8MTc0NDM2MTk0NHww&ixlib=rb-4.0.3&fit=fillmax&h=1200&w=800'
     ];
 
-    const [popular, recent, topRated] = await Promise.all([
+    const [popular, latestUploadedChapter, topRated] = await Promise.all([
       mangadexService.getPopularManga(30),
-      mangadexService.getRecentManga(24),
+      mangadexService.getLatestUpdates(24),
       mangadexService.getTopRatedManga(20)
     ]);
 
     const data = {
       popular,
-      recent,
+      latestUploadedChapter,
       topRated,
       featuredImages
     };
@@ -47,7 +47,7 @@ exports.getHome = async (req, res) => {
     console.error('Error in home route:', error.message);
     res.render('pages/index', {
       popular: [],
-      recent: [],
+      latestUploadedChapter: [],
       topRated: [],
       featuredImages: [
         'https://images.unsplash.com/photo-1602416222941-a72a356dab04?ixid=M3w3MjUzNDh8MHwxfHNlYXJjaHwxfHxtYW5nYSUyMGNvdmVycyUyMGFuaW1lfGVufDB8fHx8MTc0NDM2MTk0NHww&ixlib=rb-4.0.3&fit=fillmax&h=1200&w=800'

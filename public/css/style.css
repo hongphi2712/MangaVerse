@@ -45,28 +45,52 @@ body  {
   text-shadow: 0 0 20px rgba(249, 78, 78, 0.5), 0 0 40px rgba(249, 78, 78, 0.3);
 }
 
+/* Logo Part 1 */
 .logo-part-1 {
   background: linear-gradient(45deg, #f94e4e, #ff6b6b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 10px rgba(249, 78, 78, 0.3);
+  /* Fallback cho các trình duyệt không hỗ trợ gradient text */
+  color: #f94e4e; /* Màu đỏ nếu gradient không hoạt động */
+  text-shadow: 0 0 10px rgba(249, 78, 78, 0.4); /* Tăng opacity bóng */
   transition: all 0.3s ease;
+  display: inline-block; /* Đảm bảo hiển thị inline */
+  font-size: 2rem; /* Kích thước chữ */
+  font-weight: 700; /* Chữ đậm */
+  line-height: 1; /* Đảm bảo không có khoảng cách dòng thừa */
 }
 
+/* Hiệu ứng hover cho Logo Part 1 */
+.logo-part-1:hover {
+  background: linear-gradient(45deg, #ff6b6b, #f94e4e); /* Đảo gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #ff6b6b; /* Fallback */
+  text-shadow: 0 0 15px rgba(249, 78, 78, 0.7); /* Tăng độ sáng bóng */
+}
+
+/* Logo Part 2 */
 .logo-part-2 {
   background: linear-gradient(45deg, #ffffff, #f0f0f0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  /* Fallback cho các trình duyệt không hỗ trợ gradient text */
+  color: #ffffff; /* Màu trắng nếu gradient không hoạt động */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4); /* Tăng opacity bóng */
   transition: all 0.3s ease;
+  display: inline-block; /* Đảm bảo hiển thị inline */
+  font-size: 2rem; /* Kích thước chữ */
+  font-weight: 700; /* Chữ đậm */
+  line-height: 1; /* Đảm bảo không có khoảng cách dòng thừa */
 }
 
-.logo:hover .logo-part-1 {
-  text-shadow: 0 0 20px rgba(249, 78, 78, 0.5), 0 0 40px rgba(249, 78, 78, 0.3);
-}
-
-.logo:hover .logo-part-2 {
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.3);
+/* Hiệu ứng hover cho Logo Part 2 */
+.logo-part-2:hover {
+  background: linear-gradient(45deg, #f0f0f0, #ffffff); /* Đảo gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #f0f0f0; /* Fallback */
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.7); /* Tăng độ sáng bóng */
 }
 
 .search-container {
@@ -504,96 +528,103 @@ body  {
   box-shadow: 0 6px 12px rgba(249, 78, 78, 0.3);
 }
 
-.section-divider {
-  border: none;
-  height: 1px;
-  background: linear-gradient(to right, transparent, #f94e4e, transparent);
-  margin: 2.5rem 0; /* Increased from 2rem */
-}
-
+/* Section */
 .section {
-  padding: clamp(1.5rem, 3vw, 2.5rem); /* Increased padding */
-  background-color: #1a1a1a;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-
-.section-title {
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  margin-bottom: 2rem;
-  font-family: 'Righteous', cursive;
-  color: #fff;
-  text-align: center;
-  letter-spacing: 1px;
+  padding: 1rem 0.75rem; /* Increased padding for more spacious layout */
+  background: linear-gradient(135deg, #1a1a1a, #111); /* Subtle gradient for depth */
+  border-radius: 12px; /* Rounded corners for a modern look */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Soft shadow for elevation */
+  overflow: hidden; /* Ensures clean edges */
   position: relative;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s ease-out forwards;
+  z-index: 1;
 }
 
-/* Optional underline gradient */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 70%);
+  z-index: -1;
+  opacity: 0.8;
+}
+
+/* Section Title */
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.5rem); /* Slightly smaller and responsive font-size */
+  font-weight: 800; /* Bold font weight */
+  color: #f94e4e; /* Vibrant red tone */
+  text-align: center;
+  position: relative;
+  margin-bottom: clamp(2rem, 4vw, 3rem); /* Reduced responsive margin-bottom */
+  font-family: 'Righteous', cursive; /* Stylish and unique font */
+  text-transform: uppercase; /* Uppercase for emphasis */
+  letter-spacing: 2px; /* Moderate letter spacing */
+  text-shadow: 0 4px 10px rgba(249, 78, 78, 0.5), 0 0 20px rgba(255, 255, 255, 0.3); /* Softer glowing effect */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  background: linear-gradient(90deg, #f94e4e, #ff6b6b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-title:hover {
+  transform: scale(1.1); /* Slight zoom effect on hover */
+  text-shadow: 0 6px 15px rgba(249, 78, 78, 0.7), 0 0 30px rgba(255, 255, 255, 0.5); /* Enhanced glow on hover */
+}
+
+/* Underline Effect */
 .section-title::after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: -10px; /* Reduced spacing for better alignment */
   left: 50%;
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, #ff5858, #ffc371);
+  background: linear-gradient(90deg, #f94e4e, #ff6b6b); /* Matches the title gradient */
   border-radius: 2px;
-  opacity: 0.9;
+  opacity: 1;
+  transition: width 0.3s ease, background 0.3s ease; /* Smooth expansion and color transition */
 }
 
-/* Keyframes for fade + slide-in */
-@keyframes fadeInUp {
+/* Hover Effect: Expand underline */
+.section-title:hover::after {
+  width: 80px; /* Slightly wider underline on hover */
+  background: linear-gradient(90deg, #ff6b6b, #f94e4e); /* Reverse gradient for dynamic effect */
+}
+
+/* Animation on Page Load */
+.section-title::after {
+  animation: slide-in-expand 0.5s ease forwards;
+}
+
+/* Keyframes for underline animation */
+@keyframes slide-in-expand {
   from {
-    opacity: 0;
-    transform: translateY(20px);
+    width: 0;
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
+    width: 60px;
   }
 }
 
-
-/* Auto-scroll container for Popular Now section */
-.auto-scroll-container {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  padding: 1.5rem 0; /* Increased from 1rem */
+/* Section Divider */
+.section-divider {
+  border: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 2rem 0;
 }
 
-.auto-scroll-wrapper {
-  display: flex;
-  width: max-content;
-  animation: scroll-left 80s linear infinite; /* Slowed down from 60s */
-  position: relative;
-}
-
-.auto-scroll-wrapper:hover {
-  animation-play-state: paused;
-}
-
-@keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-180px * 15)); } /* Adjusted for more cards */
-}
-
-.auto-scroll-wrapper .card.duplicate {
-  /* Styles for the duplicated cards for seamless looping */
-  opacity: 1;
-}
-
+/* Scroll container */
 .scroll-container {
   display: flex;
-  gap: 1.2rem; /* Increased from 1rem */
+  gap: 1.2rem;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding: 1.5rem 0; /* Increased from 1rem */
+  padding: 1.5rem 0;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   user-select: none;
@@ -605,30 +636,47 @@ body  {
   width: 100%;
 }
 
+/* Áp dụng animation cho scroll-container */
+.scroll-container:has(.card) {
+  width: max-content;
+  animation: scroll-left var(--scroll-duration, 60ss) linear infinite; /* Reduced duration for faster scrolling */
+}
+
+.scroll-container:hover {
+  animation-play-state: paused;
+}
+
+/* Keyframes cho scroll-left */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(var(--scroll-distance, calc(-180px * 15))); }
+}
+
 .scroll-container::-webkit-scrollbar {
-  display: none;
+  display: none; /* Ẩn scrollbar */ 
 }
 
 .scroll-container:active {
   cursor: grabbing;
 }
 
+/* Card */
 .card {
   flex: 0 0 auto;
-  width: clamp(234px, 45.5vw, 312px); /* Tăng kích thước lên 1.3 lần */
+  width: clamp(234px, 45.5vw, 312px);
   height: auto;
-  border-radius: 16px; /* Tăng độ bo góc lên */
+  border-radius: 16px;
   overflow: hidden;
   background-color: #1e1e1e;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   cursor: pointer;
   position: relative;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* Tăng độ đổ bóng */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  margin-right: 1.625rem; /* Tăng khoảng cách giữa các thẻ */
+  margin-right: 1.625rem;
 }
 
 .card a {
@@ -639,26 +687,26 @@ body  {
 }
 
 .card:hover {
-  transform: translateY(-10px); /* Tăng độ dịch chuyển khi hover */
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); /* Tăng độ đổ bóng khi hover */
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 }
 
 .card img {
   width: 100%;
-  height: clamp(286px, 45.5vw, 351px); /* Tăng chiều cao ảnh lên 1.3 lần */
+  height: clamp(286px, 45.5vw, 351px);
   object-fit: cover;
-  border-radius: 16px 16px 0 0; /* Tăng độ bo góc cho ảnh */
+  border-radius: 16px 16px 0 0;
   transition: transform 0.2s ease-in-out;
 }
 
 .card:hover img {
-  transform: scale(1.05); /* Tăng độ zoom nhẹ khi hover */
+  transform: scale(1.05);
 }
 
 .card h3 {
   margin: 0;
-  padding: clamp(0.78rem, 2.6vw, 1.56rem); /* Tăng padding lên 1.3 lần */
-  font-size: clamp(1.17rem, 2.86vw, 1.43rem); /* Tăng kích thước font lên 1.3 lần */
+  padding: clamp(0.78rem, 2.6vw, 1.56rem);
+  font-size: clamp(1.17rem, 2.86vw, 1.43rem);
   font-family: 'DM Sans', sans-serif;
   color: #f0f0f0;
   text-align: center;
@@ -677,20 +725,38 @@ body  {
   background: linear-gradient(to bottom, transparent 10%, rgba(249, 78, 78, 0.85));
 }
 
+/* Duplicate card */
+.card.duplicate {
+  opacity: 1;
+}
+
+/* No Results */
+.no-results {
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  width: 100%;
+}
+
+/* View All Button */
+.view-all-btn-container {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.view-all-btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: #f94e4e;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
 
 .view-all-btn:hover {
-  background-color: rgba(249, 78, 78, 0.2);
-  transform: translateY(-2px);
-}
-.section-decor {
-  position: absolute;
-  left: 0;
-  bottom: 5px;
-  width: 100%;
-  height: 8px;
-  background: rgba(249, 78, 78, 0.2);
-  border-radius: 4px;
-  z-index: 0;
+  background: #ff6b6b;
 }
 
 .ranking-grid {
@@ -737,7 +803,7 @@ body  {
 .ranking-left {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem; /* Reduced gap for better balance */
   flex: 1;
   min-width: 0;
 }
@@ -753,8 +819,8 @@ body  {
 
 .ranking-image-wrapper {
   position: relative;
-  width: 60px;
-  height: 90px;
+  width: 50px; /* Reduced width for better proportion */
+  height: 75px; /* Adjusted height to match aspect ratio */
   border-radius: 6px;
   overflow: hidden;
   flex-shrink: 0;
@@ -804,7 +870,7 @@ body  {
 .ranking-title {
   font-weight: 600;
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.1rem; /* Slightly reduced font size */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -821,15 +887,14 @@ body  {
 
 .ranking-right {
   margin-left: 0;
-  margin-right: 2rem;
+  margin-right: 2rem; /* Reduced margin for better alignment */
 }
-
 
 .rating-badge {
   display: flex;
   align-items: center;
   background: rgba(243, 200, 66, 0.15);
-  padding: 0.5rem 0.8rem;
+  padding: 0.4rem 0.7rem; /* Adjusted padding for better balance */
   border-radius: 20px;
   gap: 0.3rem;
 }
@@ -837,13 +902,12 @@ body  {
 .ranking-score {
   color: #f3c842;
   font-weight: 700;
-  font-size: 1.2rem;
-
+  font-size: 1.1rem; /* Slightly reduced font size */
 }
 
 .star-icon {
-  width: 18px;
-  height: 18px;
+  width: 16px; /* Reduced size for better proportion */
+  height: 16px;
   fill: #f3c842;
 }
 
@@ -1520,35 +1584,9 @@ body  {
   .pagination {
     flex-wrap: wrap;
   }
-  
-  .ranking-number {
-    display: none;
-  }
-  
-  .ranking-title {
-    font-size: 0.8rem;
-  }
-  
-  .ranking-image {
-    width: 30px;
-    height: 45px;
-  }
-  
-  .featured-item {
-    height: 150px;
-  }
-
-  .card {
-    width: clamp(120px, 25vw, 150px);
-  }
-
-  .card img {
-    height: clamp(160px, 35vw, 200px);
-  }
 
   @keyframes scroll-left {
     0% { transform: translateX(0); }
     100% { transform: translateX(calc(-120px * 15)); } /* Adjusted for more cards */
   }
 }
-  

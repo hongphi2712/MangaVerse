@@ -1,7 +1,7 @@
 const {
     getLatestManga,
     getPopularManga,
-    getRecentManga,
+    getLatestUpdates,
     getTopRatedManga,
   } = require('./manga');
   const {
@@ -20,7 +20,7 @@ const {
     getMangaChapters,
     getChapterPages,
     getPopularManga,
-    getRecentManga,
+    getLatestUpdates,
     getTopRatedManga,
     searchManga,
     getGenres,

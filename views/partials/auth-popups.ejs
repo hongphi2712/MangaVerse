@@ -1,0 +1,264 @@
+<!-- Login Popup -->
+<div id="loginPopup" class="auth-popup">
+    <div class="auth-popup-content">
+      <div class="popup-header">
+        <h2>Login to <span class="logo-part-1">Manga</span><span class="logo-part-2">Verse</span></h2>
+        <span class="close-popup">&times;</span>
+      </div>
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <input type="email" id="loginEmail" name="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <input type="password" id="loginPassword" name="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="auth-submit-btn">LOGIN</button>
+        <div class="auth-switch">
+          Don't have an account? <a href="#" class="register-link">Register</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Register Popup -->
+  <div id="registerPopup" class="auth-popup">
+    <div class="auth-popup-content">
+      <div class="popup-header">
+        <h2>Register to <span class="logo-part-1">Manga</span><span class="logo-part-2">Verse</span></h2>
+        <span class="close-popup">&times;</span>
+      </div>
+      <form id="registerForm" class="auth-form">
+        <div class="form-group">
+          <input type="text" id="registerUsername" name="username" placeholder="Username" required>
+        </div>
+        <div class="form-group">
+          <input type="email" id="registerEmail" name="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <input type="password" id="registerPassword" name="password" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+          <input type="password" id="registerConfirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+        </div>
+        <button type="submit" class="auth-submit-btn">REGISTER</button>
+        <div class="auth-switch">
+          Already have an account? <a href="#" class="login-link">Login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+  
+  .auth-popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .auth-popup-content {
+    background-color: #1a1a1a;
+    margin: 0 auto;
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 12px;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Righteous', cursive;
+  }
+  
+  .popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+  
+  .popup-header h2 {
+    font-size: 32px;
+    margin: 0;
+    font-family: 'Righteous', cursive;
+    font-weight: normal;
+  }
+  
+  .manga-text {
+    color: #ff4757;
+    font-family: 'Righteous', cursive;
+    font-weight: normal;
+  }
+  
+  .verse-text {
+    color: #fff;
+    font-family: 'Righteous', cursive;
+    font-weight: normal;
+  }
+  
+  .close-popup {
+    color: #666;
+    font-size: 28px;
+    font-weight: normal;
+    cursor: pointer;
+    line-height: 24px;
+    font-family: 'Righteous', cursive;
+  }
+  
+  .close-popup:hover {
+    color: #ff4757;
+  }
+  
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-group {
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2a2a2a;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Righteous', cursive;
+    box-sizing: border-box;
+  }
+  
+  .form-group input::placeholder {
+    color: #666;
+    font-family: 'Righteous', cursive;
+    font-size: 15px;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    background-color: #333;
+  }
+  
+  .auth-submit-btn {
+    padding: 14px;
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Righteous', cursive;
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+  }
+  
+  .auth-submit-btn:hover {
+    background-color: #ff5e6c;
+  }
+  
+  .auth-switch {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+    font-size: 16px;
+    font-family: 'Righteous', cursive;
+  }
+  
+  .auth-switch a {
+    color: #ff4757;
+    text-decoration: none;
+    font-weight: normal;
+    font-family: 'Righteous', cursive;
+    font-size: 16px;
+  }
+  
+  .auth-switch a:hover {
+    text-decoration: underline;
+  }
+  </style>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const loginPopup = document.getElementById('loginPopup');
+    const registerPopup = document.getElementById('registerPopup');
+    
+    const loginBtn = document.querySelector('.user-dropdown .dropdown-content a[href="#"]:first-child');
+    const registerBtn = document.querySelector('.user-dropdown .dropdown-content a[href="#"]:last-child');
+    const closeButtons = document.querySelectorAll('.close-popup');
+    
+    function showPopup(popup) {
+      popup.style.display = 'flex';
+    }
+    
+    function hidePopup(popup) {
+      popup.style.display = 'none';
+    }
+    
+    // Switch between login and register
+    document.querySelector('.register-link').addEventListener('click', function(e) {
+      e.preventDefault();
+      hidePopup(loginPopup);
+      showPopup(registerPopup);
+    });
+  
+    document.querySelector('.login-link').addEventListener('click', function(e) {
+      e.preventDefault();
+      hidePopup(registerPopup);
+      showPopup(loginPopup);
+    });
+  
+    // Open popups
+    loginBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      showPopup(loginPopup);
+    });
+    
+    registerBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      showPopup(registerPopup);
+    });
+    
+    // Close popups
+    closeButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        hidePopup(loginPopup);
+        hidePopup(registerPopup);
+      });
+    });
+    
+    // Close when clicking outside
+    window.addEventListener('click', function(event) {
+      if (event.target === loginPopup) {
+        hidePopup(loginPopup);
+      }
+      if (event.target === registerPopup) {
+        hidePopup(registerPopup);
+      }
+    });
+    
+    // Form submissions
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Add your login logic here
+      console.log('Login form submitted');
+    });
+    
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Add your registration logic here
+      console.log('Register form submitted');
+    });
+  });
+  </script> 

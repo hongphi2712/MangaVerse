@@ -533,6 +533,29 @@ body  {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(249, 78, 78, 0.3);
 }
+@media (max-width: 768px) {
+  .discover-section {
+    padding: 3rem 1rem; /* giảm padding để gọn lại */
+  }
+
+  .discover-content {
+    max-width: 90%; /* co lại để không bị sát mép */
+  }
+
+  .discover-content h2 {
+    font-size: 2rem; /* nhỏ hơn tí cho vừa màn */
+  }
+
+  .discover-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .discover-btn {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+}
 
 /* Section */
 .section {
@@ -783,16 +806,19 @@ body  {
 }
 
 .ranking-item-wrapper {
-  background: linear-gradient(90deg, rgba(34, 34, 34, 0.8) 0%, rgba(51, 51, 51, 0.6) 100%);
-  border-radius: 12px;
+  padding: 1rem 1.5rem; /* Thêm padding bên trong */
+  background: linear-gradient(90deg, rgba(34, 34, 34, 0.85) 0%, rgba(51, 51, 51, 0.7) 100%);
+  border-radius: 16px;
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transform: scale(1.01);
 }
 
-.ranking-item-wrapper:hover {
+.ranking-item-wrapper:hover { 
+  transform: scale(1.03);
   transform: translateX(10px);
   background: linear-gradient(90deg, rgba(249, 78, 78, 0.15) 0%, rgba(51, 51, 51, 0.8) 100%);
   box-shadow: 0 8px 15px rgba(249, 78, 78, 0.2);
@@ -824,12 +850,11 @@ body  {
   text-align: center;
   text-shadow: 0 2px 4px rgba(249, 78, 78, 0.3);
 }
-
 .ranking-image-wrapper {
   position: relative;
-  width: 50px;
-  height: 75px;
-  border-radius: 6px;
+  width: 65px; 
+  height: 95px;
+  border-radius: 8px;
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -840,6 +865,7 @@ body  {
   object-fit: cover;
   transition: transform 0.3s ease;
 }
+
 
 .ranking-hover-overlay {
   position: absolute;
@@ -1198,35 +1224,54 @@ body  {
 }
 
 .manga-chapters-section {
-  margin-top: 2.5rem; /* Increased from 2rem */
-  padding-top: 2.5rem; /* Increased from 2rem */
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
   border-top: 1px solid rgba(255,255,255,0.1);
+  width: 100%;
+  overflow: hidden;
+}
+
+.nanga-chapters {
+  width: 100%;
+  max-width: 1200px; /* Giới hạn chiều rộng tối đa */
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
 .chapter-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 0.9rem; /* Increased from 0.8rem */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .chapter-item {
   background-color: #222;
   border-radius: 8px;
   transition: all 0.3s ease;
+  overflow: hidden; /* Đảm bảo nội dung không tràn ra */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .chapter-item:hover {
   background-color: #333;
   transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .chapter-link {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.3rem; /* Increased from 0.8rem 1.2rem */
+  padding: 1.1rem 1.4rem;
   text-decoration: none;
   color: #fff;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .chapter-name {
@@ -1234,13 +1279,16 @@ body  {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 70%;
-  font-size: 1.05rem; /* Added size increase */
+  max-width: 65%;
+  font-size: 1.05rem;
+  flex-shrink: 1;
 }
 
 .chapter-updated {
-  font-size: 0.85rem; /* Increased from 0.8rem */
+  font-size: 0.85rem;
   color: #aaa;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
 }
 
 .recommendations-section {
@@ -1517,6 +1565,11 @@ body  {
   .navbar {
     padding: 0.3rem;
   }
+  .manga-details .section {
+    margin: 1.5rem 0;
+    padding: 0 0.8rem;
+    box-sizing: border-box;
+}
 
   .nav-btn {
     font-size: 0.7rem;

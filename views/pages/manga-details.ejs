@@ -84,7 +84,7 @@
           const sortedChapters = [...chapters].sort((a, b) => {
             const aNum = parseFloat(a.chapter) || 0;
             const bNum = parseFloat(b.chapter) || 0;
-            return bNum - aNum;
+            return aNum - bNum; 
           });
           
           // Keep track of chapters we've already displayed to avoid duplicates

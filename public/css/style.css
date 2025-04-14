@@ -4,6 +4,8 @@ body  {
   font-family: 'DM Sans', sans-serif;
   color: #fff;
   overflow-x: hidden;
+  scroll-behavior: smooth;
+  zoom: 0.8;
 }
 
 .navbar {

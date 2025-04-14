@@ -1,4 +1,3 @@
-
 <section class="welcome-section" style="background-image: url('<%= featuredImages[1] %>');">
   <div class="welcome-overlay"></div>
   <div class="welcome-content">
@@ -102,15 +101,14 @@
 
   <section class="section">
     <div class="section-header">
-      <h2 class="section-title">Top Rated Manga</h2>
+      <h2 class="section-title">Top Rated Mangas</h2>
       <div class="section-decor"></div>
     </div>
     
     <% if (topRated && topRated.length > 0) { %>
       <div class="ranking-grid">
-        <!-- Left Column -->
         <ul class="ranking-list">
-          <% topRated.slice(0, 10).forEach((item, index) => { %>
+          <% topRated.slice(0, 15).forEach((item, index) => { %>
             <li class="ranking-item-wrapper">
               <a href="/manga/<%= item.slug %>" class="ranking-item">
                 <div class="ranking-left">
@@ -125,40 +123,9 @@
                   </div>
                   <div class="ranking-info">
                     <span class="ranking-title"><%= item.title || 'Untitled Manga' %></span>
-                    <span class="ranking-author"><%= item.author || 'Unknown Author' %></span>
-                  </div>
-                </div>
-                <div class="ranking-right">
-                  <div class="rating-badge">
-                    <span class="ranking-score"><%= item.rate || 'N/A' %></span>
-                    <svg class="star-icon" viewBox="0 0 24 24">
-                      <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/>
-                    </svg>
-                  </div>
-                </div>
-              </a>
-            </li>
-          <% }); %>
-        </ul>
-        
-        <!-- Right Column -->
-        <ul class="ranking-list">
-          <% topRated.slice(10, 20).forEach((item, index) => { %>
-            <li class="ranking-item-wrapper">
-              <a href="/manga/<%= item.slug %>" class="ranking-item">
-                <div class="ranking-left">
-                  <span class="ranking-number"><%= index + 11 %></span>
-                  <div class="ranking-image-wrapper">
-                    <img src="<%= item.thumbnail || '/images/no-image.jpg' %>" alt="<%= item.title %>" class="ranking-image" loading="lazy">
-                    <div class="ranking-hover-overlay">
-                      <svg class="ranking-hover-icon" viewBox="0 0 24 24">
-                        <path d="M8,5.14V19.14L19,12.14L8,5.14Z"/>
-                      </svg>
-                    </div>
-                  </div>
-                  <div class="ranking-info">
-                    <span class="ranking-title"><%= item.title || 'Untitled Manga' %></span>
-                    <span class="ranking-author"><%= item.author || 'Unknown Author' %></span>
+                    <% if (item.author) { %>
+                      <span class="ranking-author"><%= item.author %></span>
+                    <% } %>
                   </div>
                 </div>
                 <div class="ranking-right">
@@ -176,12 +143,7 @@
       </div>
       
       <div class="view-all-btn-container">
-        <a href="/lists/completed" class="view-all-btn">
-          View All
-          <svg class="arrow-icon" viewBox="0 0 24 24">
-            <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>
-          </svg>
-        </a>
+        <a href="/lists/completed" class="view-all-btn">View All</a>
       </div>
     <% } else { %>
       <div class="no-results">

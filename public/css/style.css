@@ -57,7 +57,9 @@ body  {
   display: inline-block; /* Đảm bảo hiển thị inline */
   font-size: 2rem; /* Kích thước chữ */
   font-weight: 700; /* Chữ đậm */
-  line-height: 1; /* Đảm bảo không có khoảng cách dòng thừa */
+  line-height: 1.3; /* Tăng line-height để tránh cắt chữ */
+  padding-bottom: 0.2em; /* Thêm padding dưới để tránh cắt chữ */
+  font-family: 'Righteous', cursive;
 }
 
 /* Hiệu ứng hover cho Logo Part 1 */
@@ -81,7 +83,9 @@ body  {
   display: inline-block; /* Đảm bảo hiển thị inline */
   font-size: 2rem; /* Kích thước chữ */
   font-weight: 700; /* Chữ đậm */
-  line-height: 1; /* Đảm bảo không có khoảng cách dòng thừa */
+  line-height: 1.3; /* Tăng line-height để tránh cắt chữ */
+  padding-bottom: 0.2em; /* Thêm padding dưới để tránh cắt chữ */
+  font-family: 'Righteous', cursive;
 }
 
 /* Hiệu ứng hover cho Logo Part 2 */
@@ -1589,4 +1593,13 @@ body  {
     0% { transform: translateX(0); }
     100% { transform: translateX(calc(-120px * 15)); } /* Adjusted for more cards */
   }
+}
+
+.popup-header h2 {
+  font-size: 32px;
+  margin: 0;
+  font-family: 'Righteous', cursive;
+  font-weight: normal;
+  line-height: 1.3; /* Tăng line-height để tránh cắt chữ */
+  padding-bottom: 0.2em; /* Thêm padding dưới để tránh cắt chữ */
 }

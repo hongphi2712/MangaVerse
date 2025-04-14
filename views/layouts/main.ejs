@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta property="og:title" content="<%= title || 'MangaVerse - Discover Amazing Manga' %>">
+  <meta property="og:title" content="<%= title || 'MangaVerse - Discover Amazing Mangas' %>">
   <title><%= title || 'MangaVerse' %></title>
+  <meta name="description" content="<%= pageDescription || 'a place for fellow manga enthusiasts.' %>">
+  <meta property="og:url" content="<%= ogUrl || 'https://manga-verse-nu.vercel.app' %>">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="<%= ogDescription || 'a place for fellow manga enthusiasts.' %>">
+  <meta property="og:image" content="<%= ogImage || 'https://opengraph.b-cdn.net/production/images/5a6b45b9-8e11-4eb1-95a0-31e048d6b15d.png?token=lPFWzA8UzxA7oepnYMIE6iyc8lA2nUGqyHOgDciAp_0&height=630&width=1200&expires=33280621422' %>">
   <link rel="stylesheet" href="/css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans&family=Righteous&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png">

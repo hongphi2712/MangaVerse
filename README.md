@@ -5,6 +5,7 @@
 **Thành viên:**
 - 11236179 – Nguyễn Hồng Phi  
 - 11236062 – Vũ Đức Anh
+- ......... - Nguyễn Quang Anh
 
 ## 2. Mục Tiêu Dự Án
 MangaVerse được phát triển với các mục tiêu chính sau:

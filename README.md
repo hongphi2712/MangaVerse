@@ -7,6 +7,8 @@
 - 11236062 – Vũ Đức Anh
 - 11236055 - Nguyễn Quang Anh
 
+Link trang web được deploy trên Vercel: https://manga-verse-nu.vercel.app
+
 ## 2. Mục Tiêu Dự Án
 MangaVerse được phát triển với các mục tiêu chính sau:
 - Cung cấp một nền tảng trực tuyến để người dùng khám phá và đọc manga.

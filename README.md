@@ -1,23 +1,22 @@
 # Báo Cáo Dự Án: MangaVerse
 
 ## 1. Giới Thiệu Dự Án
-**MangaVerse** là một ứng dụng web được phát triển để cung cấp một nền tảng trực tuyến dành cho cộng đồng yêu thích manga. Dự án tập trung vào việc cho phép người dùng khám phá, tìm kiếm, và đọc manga trực tuyến thông qua việc tích hợp **MangaDex API** – một nguồn dữ liệu phong phú về manga. MangaVerse được xây dựng với giao diện thân thiện, thiết kế tối giản, và tối ưu cho cả máy tính và thiết bị di động. Dự án được phát triển bởi **hongphi2712** và được lưu trữ công khai trên GitHub tại [https://github.com/hongphi2712/MangaVerse](https://github.com/hongphi2712/MangaVerse).
-
-Giao diện trang chủ của MangaVerse (hình ảnh được cung cấp) cho thấy một thiết kế hiện đại với nền tối, logo "MangaVerse" nổi bật, và các tính năng chính như "Discover New Series" và "Find Your Favorite Genre". Điều này cho thấy dự án nhắm đến việc thu hút người dùng yêu thích manga bằng cách cung cấp một trải nghiệm khám phá và đọc manga liền mạch.
+**MangaVerse** là một ứng dụng web được phát triển để cung cấp một nền tảng trực tuyến dành cho cộng đồng yêu thích manga. Dự án tập trung vào việc cho phép người dùng khám phá, tìm kiếm, và đọc manga trực tuyến thông qua việc tích hợp **MangaDex API** – một nguồn dữ liệu phong phú về manga. MangaVerse được xây dựng với giao diện thân thiện, thiết kế tối giản, và tối ưu cho cả máy tính và thiết bị di động. Dự án được phát triển và được lưu trữ công khai trên GitHub tại [https://github.com/hongphi2712/MangaVerse](https://github.com/hongphi2712/MangaVerse).
+**Thành viên:**
+- 11236179 – Nguyễn Hồng Phi  
+- 11236062 – Vũ Đức Anh
 
 ## 2. Mục Tiêu Dự Án
 MangaVerse được phát triển với các mục tiêu chính sau:
-- Cung cấp một nền tảng trực tuyến để người dùng khám phá và đọc manga từ **MangaDex API**.
+- Cung cấp một nền tảng trực tuyến để người dùng khám phá và đọc manga
 - Xây dựng giao diện người dùng thân thiện, tối ưu cho cả máy tính và thiết bị di động.
 - Hỗ trợ các tính năng tìm kiếm, lọc manga theo thể loại, danh sách, và gợi ý ngẫu nhiên.
-- Tích hợp các tính năng như đăng nhập/đăng ký để cá nhân hóa trải nghiệm người dùng (dựa trên tệp `auth-popups.ejs`).
 
 ## 3. Tính Năng Chính
-Dựa trên cấu trúc thư mục và giao diện, MangaVerse bao gồm các tính năng chính sau:
-
+MangaVerse bao gồm các tính năng chính sau:
 ### 3.1. Khám Phá Manga
 - **Trang Chủ (`index.ejs`)**: Hiển thị các phần như "Discover New Series" và "Find Your Favorite Genre", giúp người dùng khám phá manga mới hoặc theo sở thích.
-- **Danh Sách Manga (`list.ejs`)**: Hiển thị danh sách manga theo các tiêu chí như "Popular Now" và "Latest Updates" (dựa trên đoạn code HTML trước đó).
+- **Danh Sách Manga (`list.ejs`)**: Hiển thị danh sách manga theo các tiêu chí như "Popular Now" và "Latest Updates"
 - **Gợi Ý Ngẫu Nhiên (`randomController.js`)**: Cho phép người dùng khám phá manga ngẫu nhiên.
 
 ### 3.2. Tìm Kiếm và Lọc
@@ -87,12 +86,10 @@ Dựa trên cấu trúc thư mục và giao diện, dự án đang ở giai đo�
 ### 7.1. Thách Thức
 - **Tích Hợp API**: MangaDex API có thể thay đổi hoặc giới hạn số lượng yêu cầu, gây ảnh hưởng đến hiệu suất.
 - **Hiệu Suất**: Tải dữ liệu manga (hình ảnh, chương) có thể chậm nếu không tối ưu hóa.
-- **Bảo Mật**: Xử lý yêu cầu API qua proxy (`proxy.js`) cần đảm bảo an toàn, tránh rò rỉ dữ liệu.
 
 ### 7.2. Giải Pháp
 - Sử dụng `node-cache` để lưu trữ dữ liệu tạm thời, giảm số lượng yêu cầu đến MangaDex API.
 - Tối ưu hóa hình ảnh manga bằng cách nén hoặc tải dần (lazy loading).
-- Thêm xác thực cho các yêu cầu API qua proxy, sử dụng biến môi trường (`dotenv`) để lưu trữ thông tin nhạy cảm.
 
 ## 8. Kết Luận
 **MangaVerse** là một dự án đầy tiềm năng, mang đến một nền tảng đọc manga trực tuyến hiện đại và thân thiện với người dùng. Với việc tích hợp MangaDex API và sử dụng các công nghệ như Node.js, Express, và EJS, dự án đã đạt được nhiều tiến bộ trong việc cung cấp trải nghiệm đọc manga liền mạch. Giao diện tối giản, màu sắc hài hòa, và các tính năng như tìm kiếm, lọc theo thể loại, và đọc trực tuyến là những điểm nổi bật của MangaVerse.
@@ -101,6 +98,3 @@ Dựa trên cấu trúc thư mục và giao diện, dự án đang ở giai đo�
 - Tích hợp đăng nhập/đăng ký đầy đủ để hỗ trợ cá nhân hóa.
 - Thêm tính năng lưu manga yêu thích và đồng bộ tiến độ đọc.
 - Tối ưu hóa hiệu suất và bảo mật cho các yêu cầu API.
-- Triển khai ứng dụng trên Vercel để người dùng trải nghiệm thực tế.
-
-**Ngày Báo Cáo**: 14/04/2025  

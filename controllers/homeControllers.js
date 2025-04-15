@@ -17,10 +17,9 @@ exports.getHome = async (req, res) => {
     }
 
     const featuredImages = [
-      'https://images.unsplash.com/photo-1602416222941-a72a356dab04?ixid=M3w3MjUzNDh8MHwxfHNlYXJjaHwxfHxtYW5nYSUyMGNvdmVycyUyMGFuaW1lfGVufDB8fHx8MTc0NDM2MTk0NHww&ixlib=rb-4.0.3&fit=fillmax&h=1200&w=800',
-      'https://images.unsplash.com/photo-1519638399535-1b036603ac77?ixid=M3w3MjUzNDh8MHwxfHNlYXJjaHwyfHxtYW5nYSUyMGNvdmVycyUyMGFuaW1lfGVufDB8fHx8MTc0NDM2MTk0NHww&ixlib=rb-4.0.3&fit=fillmax&h=1200&w=800',
-      'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?ixid=M3w3MjUzNDh8MHwxfHNlYXJjaHwzfHxtYW5nYSUyMGNvdmVycyUyMGFuaW1lfGVufDB8fHx8MTc0NDM2MTk0NHww&ixlib=rb-4.0.3&fit=fillmax&h=1200&w=800',
-      'https://images.unsplash.com/photo-1578632767115-351597cf2477?ixid=M3w3MjUzNDh8MHwxfHNlYXJjaHw0fHxtYW5nYSUyMGNvdmVycyUyMGFuaW1lfGVufDB8fHx8MTc0NDM2MTk0NHww&ixlib=rb-4.0.3&fit=fillmax&h=1200&w=800'
+      '/images/welcome1.jfif',
+      '/images/welcome2.jfif',
+      '/images/welcome3.jfif'
     ];
 
     const [popular, latestUploadedChapter, topRated] = await Promise.all([
@@ -50,7 +49,7 @@ exports.getHome = async (req, res) => {
       latestUploadedChapter: [],
       topRated: [],
       featuredImages: [
-        'https://images.unsplash.com/photo-1602416222941-a72a356dab04?ixid=M3w3MjUzNDh8MHwxfHNlYXJjaHwxfHxtYW5nYSUyMGNvdmVycyUyMGFuaW1lfGVufDB8fHx8MTc0NDM2MTk0NHww&ixlib=rb-4.0.3&fit=fillmax&h=1200&w=800'
+        '/images/welcome1.jfif'
       ],
       title: 'MangaVerse - Discover Amazing Manga',
       metaDescription: 'MangaVerse is the ultimate place for manga enthusiasts to explore and discover new series'

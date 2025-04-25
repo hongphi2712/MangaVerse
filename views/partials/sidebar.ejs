@@ -1,0 +1,52 @@
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">
+      <a href="/">
+        <span class="logo-part-1">Manga</span><span class="logo-part-2">Verse</span>
+      </a>
+    </div>
+    <button class="sidebar-close" id="sidebarClose">×</button>
+  </div>
+
+  <div class="sidebar-content">
+    <!-- Thanh tìm kiếm trong sidebar -->
+    <div class="search-container sidebar-search">
+      <form action="/search" method="GET">
+        <input type="text" id="sidebarSearchBar" name="keyword" placeholder="Tìm kiếm manga...">
+        <span class="search-icon">🔍</span>
+      </form>
+    </div>
+
+    <div class="sidebar-section">
+      <a href="/" class="sidebar-link">Trang chủ</a>
+      <!-- Liên kết thể loại -->
+      <a href="/genres" class="sidebar-link">Thể loại</a>
+      <div class="sidebar-subsection">
+        <a href="/genres/391b0423-d847-456f-aff0-8b0cfc03066b" class="sidebar-link sidebar-sublink">Action</a>
+        <a href="/genres/ace04997-f6bd-436e-b261-779182193d3d" class="sidebar-link sidebar-sublink">Isekai</a>
+        <a href="/genres/4d32cc48-9f00-4cca-9b5a-a839f0764984" class="sidebar-link sidebar-sublink">Comedy</a>
+        <a href="/genres/5ca48985-9a9d-4bd8-be29-80dc0303db72" class="sidebar-link sidebar-sublink">Drama</a>
+        <a href="/genres/cdc58593-87dd-415e-bbc0-2ec27bf404cc" class="sidebar-link sidebar-sublink">Fantasy</a>
+        <a href="/genres/50880a9d-5440-4732-9afb-8f457127e836" class="sidebar-link sidebar-sublink">Horror</a>
+        <a href="/genres/ee968100-4191-4968-93d3-f82d72be7e46" class="sidebar-link sidebar-sublink">Mystery</a>
+        <a href="/genres/423e2eae-a7a2-4a8b-ac03-a8351462d71d" class="sidebar-link sidebar-sublink">Romance</a>
+        <a href="/genres/b1e97889-25b4-4258-b28b-cd7f4d28ea9b" class="sidebar-link sidebar-sublink">Sci-Fi</a>
+        <a href="/genres" class="sidebar-link sidebar-sublink">Xem tất cả...</a>
+      </div>
+      
+      <!-- Liên kết danh sách -->
+      <a href="#" class="sidebar-link">Danh sách</a>
+      <div class="sidebar-subsection">
+        <a href="/lists/new-manga" class="sidebar-link sidebar-sublink">Manga mới</a>
+        <a href="/lists/on-going" class="sidebar-link sidebar-sublink">Đang tiếp diễn</a>
+        <a href="/lists/completed" class="sidebar-link sidebar-sublink">Đã hoàn thành</a>
+        <a href="/lists/top-rated" class="sidebar-link sidebar-sublink">Đánh giá cao</a>
+      </div>
+      
+      <a href="/random" class="sidebar-link">Ngẫu nhiên</a>
+      <a href="https://mangadex.org" target="_blank" rel="noopener noreferrer" class="sidebar-link">MangaDex</a>
+    </div>
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>

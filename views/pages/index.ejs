@@ -38,14 +38,6 @@
             </a>
           </div>
         <% }); %>
-        <% popular.slice(0, 10).forEach(item => { %>
-          <div class="card duplicate">
-            <a href="/manga/<%= item.slug %>">
-              <img src="<%= item.thumbnail || '/images/no-image.jpg' %>" alt="<%= item.title || 'Manga' %>">
-              <h3><%= item.title || 'Untitled Manga' %></h3>
-            </a>
-          </div>
-        <% }); %>
       <% } else { %>
         <p class="no-results">No popular manga available at the moment. Please check again later.</p>
       <% } %>
@@ -70,16 +62,8 @@
             </a>
           </div>
         <% }); %>
-        <% latestUploadedChapter.forEach(item => { %>
-          <div class="card duplicate">
-            <a href="/manga/<%= item.slug %>">
-              <img src="<%= item.thumbnail || '/images/no-image.jpg' %>" alt="<%= item.title || 'Manga' %>">
-              <h3><%= item.title || 'Untitled Manga' %></h3>
-            </a>
-          </div>
-        <% }); %>
       <% } else { %>
-        <p class="no-results">No latestUploadedChapter manga available at the moment. Please check again later.</p>
+        <p class="no-results">No latest updates available at the moment. Please check again later.</p>
       <% } %>
     </div>
     <div class="view-all-btn-container">

@@ -12,20 +12,191 @@ body  {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem; /* Tăng chiều cao */
+  padding: 1rem 2rem;
   background-color: rgba(26, 26, 26, 0.95);
-  backdrop-filter: blur(14px); /* Mờ hơn */
+  backdrop-filter: blur(14px);
   position: sticky;
   top: 0;
   z-index: 1000;
   flex-wrap: wrap;
   width: 100%;
   box-sizing: border-box;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3); /* Đổ bóng */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 0 0 10px 10px; /* Bo nhẹ phần dưới */
+  border-radius: 0 0 10px 10px;
+  transition: padding 0.3s ease;
 }
 
+/* Sidebar Toggle Button */
+.sidebar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+  transform: scale(1.1);
+  color: #f94e4e;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px; /* Ẩn sidebar ban đầu */
+  width: 300px;
+  height: 100vh;
+  background: #1a1a1a;
+  z-index: 2000;
+  transition: left 0.3s ease;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
+}
+
+.sidebar.active {
+  left: 0; /* Hiển thị sidebar khi có class active */
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-logo {
+  font-size: 1.2rem;
+}
+
+.sidebar-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.sidebar-content {
+  padding: 1rem;
+}
+
+.sidebar-section {
+  margin-bottom: 2rem;
+}
+
+.sidebar-section h3 {
+  color: #f94e4e;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-family: 'Righteous', cursive;
+}
+
+.sidebar-link {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  margin-bottom: 0.5rem;
+  font-family: 'Righteous', cursive;
+}
+
+.sidebar-link:hover {
+  background: rgba(249, 78, 78, 0.1);
+  color: #f94e4e;
+  transform: translateX(5px);
+}
+
+.sidebar-subsection {
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar-sublink {
+  font-size: 0.9em;
+  padding: 0.4rem 1rem;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1999;
+  display: none;
+  backdrop-filter: blur(3px);
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* Sidebar Search */
+.sidebar .search-container.sidebar-search {
+  display: block;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.sidebar .search-container.sidebar-search #sidebarSearchBar {
+  width: 100%;
+  padding: 0.7rem 2.5rem;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 25px;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.sidebar .search-container.sidebar-search #sidebarSearchBar:focus {
+  border-color: #f94e4e;
+  background-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 10px rgba(249, 78, 78, 0.2);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    display: block;
+    order: 1;
+  }
+  
+  .nav-buttons {
+    display: none;
+  }
+  
+  
+  .navbar {
+    padding: 0.8rem 1rem;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    order: 1;
+    margin-right: auto;
+  }
+  
+  .sidebar-toggle {
+    order: 0;
+  }
+  
+  .user-dropdown {
+    display: none;
+  }
+}
 
 .logo {
   font-family: 'Righteous', cursive;
@@ -103,6 +274,7 @@ body  {
   position: relative;
   width: clamp(200px, 40%, 500px);
   margin: 0 1rem;
+  transition: all 0.3s ease;
 }
 
 .search-container form {
@@ -122,6 +294,11 @@ body  {
   transition: all 0.3s ease;
   box-sizing: border-box;
   backdrop-filter: blur(5px);
+}
+
+#searchBar:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 #searchBar::placeholder {
@@ -654,7 +831,7 @@ body  {
   overflow-x: auto;
   scroll-behavior: smooth;
   padding: 1.5rem 0;
-  scrollbar-width: none;
+  margin-bottom: 0.5rem;
   -webkit-overflow-scrolling: touch;
   user-select: none;
   -webkit-user-select: none;
@@ -663,12 +840,16 @@ body  {
   cursor: grab;
   position: relative;
   width: 100%;
+  
+  /* Hiển thị scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(249, 78, 78, 0.5) rgba(26, 26, 26, 0.3);
 }
 
 /* Áp dụng animation cho scroll-container */
 .scroll-container:has(.card) {
   width: max-content;
-  animation: scroll-left var(--scroll-duration, 60ss) linear infinite; /* Reduced duration for faster scrolling */
+  animation: scroll-left 60s linear infinite;
 }
 
 .scroll-container:hover {
@@ -678,35 +859,110 @@ body  {
 /* Keyframes cho scroll-left */
 @keyframes scroll-left {
   0% { transform: translateX(0); }
-  100% { transform: translateX(var(--scroll-distance, calc(-180px * 15))); }
+  100% { transform: translateX(calc(-180px * var(--card-count, 15))); } /* Sử dụng biến CSS */
 }
 
+/* Tùy chỉnh scrollbar cho Chrome, Edge, và Safari */
 .scroll-container::-webkit-scrollbar {
-  display: none; /* Ẩn scrollbar */ 
+  height: 8px;
+  background: rgba(26, 26, 26, 0.3);
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: rgba(249, 78, 78, 0.5);
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(249, 78, 78, 0.7);
 }
 
 .scroll-container:active {
   cursor: grabbing;
 }
 
-/* Card */
+.scroll-container.with-controls {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  margin-left: -3rem;
+  margin-right: -3rem;
+}
+
+/* Nút điều khiển scroll */
+.scroll-controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+}
+
+.scroll-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(249, 78, 78, 0.8);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  pointer-events: auto;
+  opacity: 0.8;
+  border: none;
+}
+
+.scroll-btn:hover {
+  background: rgba(249, 78, 78, 1);
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.scroll-btn:active {
+  transform: scale(0.95);
+}
+
+.scroll-btn.prev {
+  margin-left: 0.5rem;
+}
+
+.scroll-btn.next {
+  margin-right: 0.5rem;
+}
+
+.scroll-btn.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Card - Phiên bản cải tiến */
+/* Card styling */
 .card {
   flex: 0 0 auto;
-  width: clamp(234px, 45.5vw, 312px);
-  height: auto;
-  border-radius: 16px;
+  width: clamp(180px, 30vw, 280px);
+  border-radius: 12px;
   overflow: hidden;
   background-color: #1e1e1e;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   position: relative;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  margin-right: 1.625rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1rem;
 }
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(249, 78, 78, 0.2);
+  z-index: 10;
+}
+
 
 .card a {
   text-decoration: none;
@@ -715,77 +971,79 @@ body  {
   height: 100%;
 }
 
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-}
-
 .card img {
   width: 100%;
-  height: clamp(286px, 45.5vw, 351px);
+  height: clamp(240px, 40vw, 320px);
   object-fit: cover;
-  border-radius: 16px 16px 0 0;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.3s ease;
 }
-
 .card:hover img {
   transform: scale(1.05);
 }
 
 .card h3 {
+  padding: 0.8rem;
+  font-size: 1rem;
   margin: 0;
-  padding: clamp(0.78rem, 2.6vw, 1.56rem);
-  font-size: clamp(1.17rem, 2.86vw, 1.43rem);
-  font-family: 'DM Sans', sans-serif;
-  color: #f0f0f0;
-  text-align: center;
-  background: linear-gradient(to bottom, transparent 10%, rgba(0, 0, 0, 0.7));
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  transition: background 0.2s ease-in-out;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: #fff;
 }
-
 .card:hover h3 {
-  background: linear-gradient(to bottom, transparent 10%, rgba(249, 78, 78, 0.85));
+  color: #f94e4e;
 }
 
-/* Duplicate card */
-.card.duplicate {
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 70%, rgba(249, 78, 78, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card:hover::after {
   opacity: 1;
 }
-
-/* No Results */
-.no-results {
-  color: #fff;
-  text-align: center;
-  padding: 2rem;
-  width: 100%;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .scroll-container {
+    gap: 0.8rem;
+    padding: 1rem 0.3rem;
+  }
+  
+  .card {
+    width: clamp(140px, 40vw, 200px);
+  }
+  
+  .card img {
+    height: clamp(200px, 50vw, 260px);
+  }
+  
+  .card h3 {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
 }
 
-/* View All Button */
-.view-all-btn-container {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.view-all-btn {
-  display: inline-block;
-  padding: 0.8rem 1.5rem;
-  background: #f94e4e;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 20px;
-  font-weight: 600;
-  transition: background 0.3s ease;
-}
-
-.view-all-btn:hover {
-  background: #ff6b6b;
+@media (max-width: 480px) {
+  .card {
+    width: clamp(120px, 42vw, 180px);
+  }
+  
+  .card img {
+    height: clamp(160px, 55vw, 220px);
+  }
+  
+  .card h3 {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
 }
 
 .ranking-grid {
@@ -1443,35 +1701,56 @@ body  {
   padding: 0 1.2rem; /* Increased from 1rem */
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .navbar {
-    flex-direction: column;
-    padding: 0.3rem;
-    gap: 0.3rem;
+    padding: 0.8rem 1rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   .logo {
     font-size: 1.2rem;
-    justify-content: center;
-    margin-bottom: 0.3rem;
+    order: 1;
+    margin-right: auto;
   }
 
-  .search-container {
-    width: 100%;
-    margin: 0.5rem 0;
-  }
-
-  #searchBar {
-    padding: 0.6rem 2.2rem;
-    font-size: 0.85rem;
-    background-color: rgba(255, 255, 255, 0.03);
+  .logo .logo-part-1,
+  .logo .logo-part-2 {
+    font-size: 1.6rem;
   }
 
   .nav-buttons {
+    display: none;
+  }
+
+  .search-container {
+    order: 3;
     width: 100%;
-    gap: 0.3rem;
-    margin-top: 0.3rem;
-    flex-wrap: wrap;
+    margin: 0.5rem 0;
+    flex-basis: 100%;
+  }
+
+  .sidebar-toggle {
+    display: block;
+    order: 2;
+    margin-left: 1rem;
+  }
+
+  .user-dropdown {
+    order: 4;
+    display: none;
+  }
+
+  /* Điều chỉnh searchbar cho mobile */
+  #searchBar {
+    padding: 0.6rem 2.2rem;
+    font-size: 0.85rem;
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .search-icon {
+    left: 0.8rem;
+    font-size: 0.9rem;
   }
 
   .nav-btn {
@@ -1561,9 +1840,23 @@ body  {
   }
 }
 
-@media screen and (max-width: 480px) {
+/* Thêm breakpoint cho màn hình cực nhỏ */
+@media (max-width: 480px) {
   .navbar {
-    padding: 0.3rem;
+    padding: 0.7rem 0.8rem;
+  }
+
+  .logo .logo-part-1,
+  .logo .logo-part-2 {
+    font-size: 1.4rem;
+  }
+
+  .search-container {
+    margin: 0.4rem 0;
+  }
+
+  #searchBar {
+    padding: 0.5rem 2rem;
   }
   .manga-details .section {
     margin: 1.5rem 0;

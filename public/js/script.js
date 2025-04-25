@@ -3,7 +3,33 @@ document.addEventListener('DOMContentLoaded', function() {
   initSidebar();
   initAuthPopups();
   initScrollContainers();
+  initLazyLoading();
 });
+
+// Thêm hàm mới để xử lý lazy loading
+function initLazyLoading() {
+  // Kiểm tra nếu trình duyệt hỗ trợ Intersection Observer
+  if ('IntersectionObserver' in window) {
+    const lazyItems = document.querySelectorAll('.ranking-item-wrapper[loading="lazy"]');
+    
+    const lazyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const item = entry.target;
+          item.removeAttribute('loading');
+          lazyObserver.unobserve(item);
+        }
+      });
+    }, {
+      rootMargin: '200px 0px',
+      threshold: 0.01
+    });
+    
+    lazyItems.forEach(item => {
+      lazyObserver.observe(item);
+    });
+  }
+}
 
 // ===== SIDEBAR FUNCTIONALITY =====
 function initSidebar() {

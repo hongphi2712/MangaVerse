@@ -82,13 +82,20 @@
     <% if (topRated && topRated.length > 0) { %>
       <div class="ranking-grid">
         <ul class="ranking-list">
-          <% topRated.slice(0, 15).forEach((item, index) => { %>
-            <li class="ranking-item-wrapper">
+          <% topRated.forEach((item, index) => { %>
+            <li class="ranking-item-wrapper" <%= index > 9 ? 'loading="lazy"' : '' %>>
               <a href="/manga/<%= item.slug %>" class="ranking-item">
                 <div class="ranking-left">
                   <span class="ranking-number"><%= index + 1 %></span>
                   <div class="ranking-image-wrapper">
-                    <img src="<%= item.thumbnail || '/images/no-image.jpg' %>" alt="<%= item.title %>" class="ranking-image" loading="lazy">
+                    <img 
+                      src="<%= item.thumbnail || '/images/no-image.jpg' %>" 
+                      alt="<%= item.title %>" 
+                      class="ranking-image" 
+                      loading="<%= index < 5 ? 'eager' : 'lazy' %>"
+                      width="60" 
+                      height="90"
+                    >
                     <div class="ranking-hover-overlay">
                       <svg class="ranking-hover-icon" viewBox="0 0 24 24">
                         <path d="M8,5.14V19.14L19,12.14L8,5.14Z"/>
@@ -117,7 +124,7 @@
       </div>
       
       <div class="view-all-btn-container">
-        <a href="/lists/completed" class="view-all-btn">View All</a>
+        <a href="/lists/top-rated" class="view-all-btn">View All</a>
       </div>
     <% } else { %>
       <div class="no-results">

@@ -59,16 +59,21 @@ async function getLatestUpdates(limit = 10) {
   }
 }
 
-async function getTopRatedManga(limit = 6) {
+async function getTopRatedManga(limit = 15) {
   try {
+    // Thêm các tham số để tối ưu hóa request
     const response = await api.get('/manga', {
       params: {
         limit,
-        includes: ['cover_art'],
+        includes: ['cover_art', 'author'],
         order: { rating: 'desc' },
+        contentRating: ['safe', 'suggestive', 'erotica'],
+        hasAvailableChapters: true,
+        availableTranslatedLanguage: ['en']
       },
     });
 
+    // Thêm cache cho kết quả
     return response.data.data.map(formatManga);
   } catch (error) {
     console.error('Error fetching top rated manga:', error);
